@@ -1,5 +1,6 @@
+package graph;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Graph {
@@ -12,28 +13,28 @@ public class Graph {
         V = new ArrayList<>();
     }
 
-    void add_vertex(Vertex v) {
+    public void addVertex(Vertex v) {
         // Check non-existence (as a function of id, not of object)
         V.add(v);
     }
 
-    void remove_vertex(Vertex v) {
+    void removeVertex(Vertex v) {
         V.remove(v);
     }
 
-    void add_edge(Edge e) {
+    public void addEdge(Edge e) {
         // Check non-existence
         E.add(e);
     }
 
-    void remove_edge(Edge e) {
+    void removeEdge(Edge e) {
         E.remove(e);
     }
 
-    Edge get_edge(Vertex src, Vertex dest) {
+    public Edge getEdge(Vertex src, Vertex dest) {
 
         for (Edge e: this.E) {
-            if(e.get_src().equals(src) && e.get_dest().equals(dest)) {
+            if(e.getSrc().equals(src) && e.getDest().equals(dest)) {
                 return e;
             }
         }
@@ -41,12 +42,12 @@ public class Graph {
 
     }
 
-    List<Vertex> get_adjacency(Vertex v) {
-        List<Vertex> adj = new ArrayList<Vertex>();
+    List<Vertex> getAdjacency(Vertex v) {
+        List<Vertex> adj = new ArrayList<>();
 
         for (Edge e: E) {
-            if (e.get_src() == v) {
-                adj.add(e.get_dest());
+            if (e.getSrc() == v) {
+                adj.add(e.getDest());
             }
         }
 

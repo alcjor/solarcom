@@ -1,10 +1,12 @@
+package graph;
+
 import java.util.Objects;
 
 public class SimpleVertex implements Vertex {
     String id;
 
     public boolean equals(Vertex v) {
-        return Objects.equals(this.get_id(), v.get_id());
+        return Objects.equals(this.getId(), v.getId());
     }
 
 
@@ -12,7 +14,7 @@ public class SimpleVertex implements Vertex {
         this.id = id;
     }
 
-    public String get_id() {
+    public String getId() {
         return id;
     }
 }

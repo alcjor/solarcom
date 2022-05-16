@@ -1,5 +1,7 @@
+package graph;
+
 public interface Vertex {
-    String get_id();
+    String getId();
 
     boolean equals(Vertex v);
 }

@@ -1,3 +1,5 @@
+package graph;
+
 public class SimpleEdge implements Edge{
 
     Vertex src;
@@ -11,22 +13,22 @@ public class SimpleEdge implements Edge{
     }
 
     @Override
-    public Vertex get_src() {
+    public Vertex getSrc() {
         return src;
     }
 
     @Override
-    public Vertex get_dest() {
+    public Vertex getDest() {
         return dest;
     }
 
     @Override
-    public double get_weight() {
+    public double getWeight() {
         return weight;
     }
 
     @Override
-    public void set_weight(double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }
