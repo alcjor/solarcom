@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="JNISpice">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/JNISpice/out/production/JNISpice" />
+      <root url="file://$PROJECT_DIR$/lib/JNISpice/src/JNISpice" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/JNISpice/src/JNISpice" />
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>

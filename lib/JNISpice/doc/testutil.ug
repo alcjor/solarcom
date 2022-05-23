@@ -1,0 +1,560 @@
+ 
+Testing Utilities
+===========================================================================
+ 
+   This note describes how to use the Test Utilities library to ease the
+   programming tasks of testing software.
+ 
+   There are two goals behind the test utilities.
+ 
+       1.   Make the testing process easier. We all know that most of our
+            bugs live in the test code. The reason for this is simple. We
+            don't re-use code to do testing. Testing is almost always done
+            from scratch. We have not collected the common aspects of
+            testing into re-usable documented routines. The test utilities
+            attempt to do this so that we can stop rewriting and debugging
+            various bits of test code.
+ 
+       2.   Make testing uniform. At the moment testing is a hodgepodge. We
+            often cannot predict even in our own test cases the structure
+            an individual test program. This makes it difficult to read and
+            understand test programs after we've finished using them. It's
+            also difficult to string together a collection of tests so that
+            we can perform a system test at the push of a button.
+ 
+   It is my hope that the material laid out below will help with this task
+   and make our work more productive. There are two aspects of the test
+   utilities: 1) tools to help with the creation of test code. 2) a style
+   of writing test code that makes test code readable and re-usable.
+ 
+   The issue of style is probably the most important. By adopting a style
+   of testing with a common structure upon which to build various checking
+   tools we can easily grow an extensive checking library from the one I
+   will present below.
+ 
+ 
+Basic Components of Testing.
+===========================================================================
+ 
+ 
+The Test Case
+--------------------------------------------------------
+ 
+   The basic unit of testing recognized by the test utilities is the test
+   case. Although this idea is a bit vague, the basic idea is to examine
+   the behavior of some section of software for some particular instance of
+   inputs.
+ 
+      Set up initial conditions
+      Execute section of software
+      Check status of various outputs.
+ 
+ 
+Test Families
+--------------------------------------------------------
+ 
+   Test cases are organized into a family of test cases. For example a test
+   family might consists of all of the test cases needed to check out a
+   particular subroutine.
+ 
+ 
+Software Test
+--------------------------------------------------------
+ 
+   A software test is a collection of at least one executed test families.
+ 
+   The testing utilities are organized around the idea that you will have
+   one routine per test family. Thus it should be easy to eventually build
+   a complete test of a system or subsystem by simply making a collection
+   of calls to a families of test cases.
+ 
+ 
+Organization of a Software Test.
+===========================================================================
+ 
+   The code for a software test shall look like this:
+ 
+      LOGICAL               OK
+ 
+      CALL TSETUP (  LOGNAM, VERSION )
+ 
+      CALL F_Family1 ( OK )
+      CALL F_Family2 ( OK )
+      CALL F_Family3 ( OK )
+         .
+         .
+         .
+ 
+      CALL F_Familyn ( OK )
+ 
+      CALL TCLOSE ()
+      END
+ 
+   This of course carries implications about the structure of a test family
+   which will be addressed in a moment.
+ 
+   There are only 3 variable in this program: OK, LOGNAM, and VERSION. The
+   variable LOGNAM is a pattern to be used in the construction of a log
+   file that will log the results of all tests. The pattern should generate
+   a name in the 8.3 format so that we can easily port the test program to
+   all platforms. The variable VERSION is the version number of the
+   software test. This will be placed in the log file so that we can keep
+   the logs someplace as a record of our testing activity.
+ 
+   The routine TSETUP handles:
+ 
+       1.   the task of creating the logfile;
+ 
+       2.   initializing the I/O facilities of the testing utilities;
+ 
+       3.   writing into the logfile the version, date, and environment
+            information about where testing is being performed;
+ 
+       4.   setting up the error handling so that your test program can
+            test exceptions as well as nominal cases;
+ 
+       5.   determine which options have been specified on the command line
+            and setting the proper switches in the test utilities to
+            reflect this.
+ 
+   The routine TCLOSE handles the problems of summarizing the results of
+   testing, it closes the test and failure logs (if there were any test
+   failures) and if all tests were successful creates a test passage file
+   that indicates all tests were successful and lists all test families
+   that were executed.
+ 
+   For all of this to work as intended you have to follow some rules about
+   how to perform testing within a test family.
+ 
+ 
+Organization of a Test Family.
+===========================================================================
+ 
+   A test family should be organized as follows.
+ 
+            SUBROUTINE F_FAMILY ( OK )
+            LOGICAL               OK
+ 
+            <header of some form>
+            <declarations, data statements>
+ 
+      C
+      C     The first executable line is always the opening of the
+      C     test family.
+      C
+            CALL TOPEN ( 'F_FAMILY' )
+ 
+            <General initialization Code, test loop setups, etc.>
+ 
+      C
+      C     Comments describing the test case as needed if the title
+      C  doesn't do the job...
+      C
+            CALL TCASE ( ['test case title1.'] )
+               <Initialization Code if any for this test>
+               <Code or Calls to be exercised>
+               <Checks to apply for exceptions or outputs and
+               logging of results to appropriate files.>
+ 
+      C
+      C       Comments describing the test case as needed if the title
+      C    doesn't do the job...
+      C
+            CALL TCASE ( ['test case title2.'] )
+               <Initialization Code if any for this test>
+               <Code or Calls to be exercised>
+               <Checks to apply for exceptions or outputs and
+               logging of results to appropriate files.>
+ 
+         .
+         .
+         .
+      C
+      C     Comments describing the test case as needed if the title
+      C     doesn't do the job...
+      C
+            CALL TCASE ( ['test case titlek.'] )
+               <Initialization Code if any for this test>
+               <Code or Calls to be exercised>
+               <Checks to apply for exceptions or outputs and
+               logging of results to appropriate files.>
+ 
+ 
+            CALL T_SUCCESS( OK )
+            RETURN
+            END
+ 
+   Note that all test families look alike at this structure level. All are
+   subroutines that return a single logical. This logical indicates whether
+   or not the test family as a whole passed or failed. By definition if a
+   single test case fails the test family fails. This piece of information
+   is available from the routine T_SUCCESS. The call to T_SUCCESS should
+   always be the last call in the test family.
+ 
+   The call to TOPEN handles the following functions:
+ 
+       1.   If any previous test family has been opened, the results of
+            that family of tests are logged to the log file as well as to
+            standard output.
+ 
+       2.   The new family is added to an internal list of families
+            exercised.
+ 
+       3.   The status of the current family of tests is set to SUCCESS and
+            a message is logged indicating the beginning of a new family of
+            tests. This message goes to both the log file and standard
+            output.
+ 
+   The call to TOPEN should be the first executable line in a test family.
+ 
+   The only other lines that are required at this level of structure are
+   those of the form:
+ 
+            CALL TCASE ( ['test case titlek.'] )
+ 
+   This line introduces a particular test case. It initializes the status
+   of the test case to SUCCESS takes care of logging the success of the
+   last test case (if appropriate) and resets error handling.
+ 
+   TCASE takes a single argument that gives the title for this test case.
+   This can be left blank if you like. The count of test cases is
+   maintained internally so that every test case within a family has a
+   unique identifier. However, usually a short title to indicate what kind
+   of test you are performing will be helpful to anyone who has to follow
+   you and add to the test family at a later date.
+ 
+   In addition to the call to TCASE, if the title won't be sufficient later
+   for someone to understand what's being tested, put a comment before the
+   call to TCASE that describes this test case. This block of comments and
+   the call to TCASE should be indented to the same level.
+ 
+   Note that everything that follows the call to TCASE up to
+   theintroduction of the next case (or the end of the routine) should be
+   indented at least one level. This allows someone reading the test
+   program an easy way to locate the various tests by just scanning the
+   source code.
+ 
+   Obviously, if something is going to keep track of the success of tests,
+   you need to do something in the body of the test case to inform the
+   testing utilities what is happening.
+ 
+ 
+Organization of a Test Case.
+===========================================================================
+ 
+   The testing utilities can't write the code for you. They can't set up
+   the tests and generate the outputs to be tested. But they can help with
+   the checking and the automatic logging of results. Here's the structure
+   of a test case again.
+ 
+            CALL TCASE ( ['test case title1.'] )
+      C
+      C     Comments describing the test case as needed if the title
+      C     doesn't do the job...
+      C
+              <Initialization Code if any for this test>
+              <Code or Calls to be exercised>
+              <Checks to apply for exceptions or outputs and
+               logging of results to appropriate files.>
+ 
+ 
+   The testing utilities can greatly assist with the last section of the
+   test case---checking and logging. There is a collection of checking
+   routines that compare values and exceptions with expected values. If
+   comparisons satisfy a user specified criteria, the status of the test
+   case is left unchanged. However if the comparison fails the user
+   criteria, the status of the test is set to FAILURE and a message
+   indicating the failure of the test as well as a diagnosis is sent to
+   both the log file, standard output and an error log. All checking
+   routines return as an output the success of the test. This allows you to
+   take other actions such as recording the inputs to the test case in the
+   event of a test case failure or to log the success of individual test
+   cases if you choose to.
+ 
+   The routines available for checking are:
+ 
+      CHCKSC --- Checks the value of a single character string
+      CHCKSI --- Checks the value of a single integer
+      CHCKSD --- Checks the value of a single d.p.
+ 
+      CHCKSL --- Checks the value of a single logical
+      CHCKAD --- Checks the "value" of a d.p. array.
+      CHCKAI --- Checks the "value" of an integer array.
+      CHCKOC --- Checks the ordering of the items in character array.
+      CHCKOD --- Checks the ordering of the items in a d.p. array.
+      CHCKOI --- Checks the ordering of the items in an integer array.
+ 
+      CHCKXC --- Checks the status of the SPICE exception handler.
+ 
+   In the case of non-logical scalar checks, each routine allows for a wide
+   variety of comparisons. You can check that two values are different, the
+   same, one greater than the other, etc. In the case of d.p. scalars you
+   can check that the values agree to some absolute or relative tolearance.
+ 
+   The routine CHCKAD allows you to compare the values in two arrays for
+   identity or the same up to some tolerance. Again there are a number of
+   relative tolerances allowed.
+ 
+   The order checking routines allow you to check an array to see whether
+   it is increasing, non-decreasing, constant, non-increasing or
+   decreasing.
+ 
+   The routine CHCKXC allows you to test whether or not an exception was
+   signalled and if it was to compare the short error message against an
+   expected short error message.
+ 
+   Normally all of the checking routines execute silently unless the
+   expected comparison fails. If a failure is detected a message indicating
+   the nature of the failure is output to the log file, an error log and
+   standard output. If you run your test program in VERBOSE mode (see
+   below) a detailed message regarding the success of the check is
+   automatically written to the test log file and to standard output.
+ 
+   If you are running in verbose mode, the exception checker, CHCKXC , will
+   print the long error message ( if an exception was detected) to the log
+   file and to standard output. This allows you to easily check that your
+   long error messages say what you intended them to say.
+ 
+ 
+Individual Test Case Logging and Verbose Output.
+===========================================================================
+ 
+   As has been allude in several places above, the amount of output
+   produced by your test program can be controlled. The way you run your
+   test program (at least on UNIX boxes) is to type it's name followed by
+   one of two options.
+ 
+      localhost> T_SOFTWARE [-c] [-v]
+ 
+   (Unlike most UNIX conventions, you can use upper or lower case C or V in
+   the options. They mean the same thing.)
+ 
+   If you specify no options when you run your test program, the test
+   program will report only the beginning of test families (specified by
+   calls to TOPEN), test failures that occur within those families, and the
+   success or failure of the entire test family. The individual test cases
+   will be exercised silently with no visible indication that they are
+   being performed other than the report at the end of the family that
+   indicates how many cases were exercised. This is useful primarily if you
+   just want to see that the software still works as you expect it to.
+ 
+   The -c option. If this option is used, the success or failure of each
+   test case will be announced as they are concluded. This is called case
+   logging. It allows you to see test cases as they are concluded and gives
+   you feedback that test cases are actually getting done. This is usually
+   what you will want when you are running your test program interactively.
+ 
+   The -v option. f this option is used, you're going to get a lot of
+   output. This is called verbose mode. You'll probably get more than
+   you're interested in seeing when you use this mode. Nevertheless, you
+   will probably want to use this mode the first time you check exceptions
+   to see that you get the expected long error message (assuming you use
+   the routine CHCKXC). In addition the status of every other test is
+   reported. For example if you want to check that a d.p. number was within
+   some relative tolerance of another one, CHCKSD will report that success
+   and print the values of the variable, the expected value and the
+   tolerance specified for the comparison.
+ 
+   You can specify all kinds of other options on the command line. They are
+   ignored for the moment. If we want, we could pick -c to be the default
+   and add an -s for "silent" running of the test program.
+ 
+ 
+Logging your own messages.
+===========================================================================
+ 
+   The checking routines will probably take care of most of your reporting
+   functions. However, you may want custom reporting added to your output.
+   The routine for handling general output is TSTLOG. It takes two
+   arguments a message to print according to the current NICEIO style rule
+   and a logical indicating whether or not this is a message to be logged
+   to the error log as well as to the test log file and standard output.
+   Here's how you call it.
+ 
+      CALL TSTLOG ( MESSGE, ERRLOG )
+ 
+   If you want the message sent to the error log (usually only a good idea
+   if a test failure has occurred) ERRLOG should be set to TRUE. Otherwise
+   ERRLOG should be set to FALSE. Note that if an error has not occurred,
+   and you call TSTLOG with ERRLOG set to TRUE, the testing utilities will
+   believe that an error has occurred, a message to that effect will be
+   displayed and your tests will not pass.
+ 
+   You may wish to have message sent only when in verbose mode. To do this
+   call the routine VRBLOG. This has the same calling sequence as TSTLOG
+   and the arguments have the same meanings. However, in this case if
+   ERRLOG is false, information is sent to the log file and standard output
+   only if the program is running in verbose mode.
+ 
+      CALL VRBLOG ( MESSGE, ERRLOG )
+ 
+   As mentioned above, the messages are printed according to a NICEIO
+   style. In fact there are two styles available. One for writing messages
+   when ERRLOG is TRUE and one for writing messages when ERRLOG is FALSE.
+   To get these string (usually a good idea if you plan on changing them so
+   you can set them back when you've finished using your custom style) call
+   the routine TSTLGS.
+ 
+      CALL TSTSTY ( LOGSTY, ERRSTY )
+ 
+   To set these strings call the routine TSTSTY.
+ 
+      CALL TSTLGS ( LOGSTY, ERRSTY )
+ 
+   These two calls will be important if you plan to build your own checker
+   (which you should do anytime there isn't a checker that fills your
+   needs).
+ 
+   In addition to these two general purpose logging routines there is
+   another logging routine that allows you to create messages that will be
+   displayed only if a test failur occurs. There are 4 related routines.
+   They are:
+ 
+      CALL TSTMSG ( MARKER, MESSGE )
+      CALL TSTMSC ( STRING    )
+      CALL TSTMSD ( DP        )
+      CALL TSTMSF ( DP        )
+      CALL TSTMSI ( INT       )
+      CALL TSTMSO ( INT, CASE )
+      CALL TSTMST ( INT, CASE )
+ 
+   The first of these routines establishes a message and a character within
+   that message that serves as a place holder for other values that you
+   will fill in. The marker can be anything and is not used if you don't
+   need to fill in data. The next six routines allow you to fill in markers
+   within your message with a string, a character representation of a
+   double precision number, or a character representation of an integer, or
+   a text representation of a cardinal or ordinal number. These are analogs
+   to similar to REPMC, REPMD, REPMF, REPMI, REPMOT and REPMCT. However,
+   you can't adjust the number of digits for d.p.s . That's already set at
+   14 digits. If the case isn't recognized in the text routines,
+   (TSTMSO,TSTMST) it defaults to lower case.
+ 
+ 
+Building a New Checker.
+===========================================================================
+ 
+   Although the current capabilities offer a lot more than we had before,
+   this system is still in its infancy. For this to become a truly useful
+   system, we are going to need to have more checkers as well as other
+   routines that extend the current capabilities. Below is the outline of
+   what a checker should do. Look at any of the other checkers for a
+   detailed example.
+ 
+   The calling sequence of a checker should look like this:
+ 
+       SUBROUTINE CHCKxxx ( NAME,  [value], [expected value], ...,
+      .                     OK )
+       CHARACTER*(*)         NAME
+       declaration           value
+       declaration           expected value
+            .
+            .
+            .
+       LOGICAL               OK
+ 
+   The argument NAME is the name of the thing you are checking. Usually
+   you'll need this so that you can create messages that reflect the
+   success of the checker. The logical OK will always be present and should
+   be the only output. It indicates whether or not the check was
+   successful.
+ 
+   The body of the code should probably begins with the following.
+ 
+       INTEGER               STYSIZ
+       PARAMETER           ( STYSIZ = 120 )
+ 
+       CHARACTER*(STYSIZ)    LOGSTY
+       CHARACTER*(STYSIZ)    ERRSTY
+ 
+       CALL TSTSTY ( LOGSTY, ERRSTY )
+       CALL TSTLGS ( 'LEFT 3 RIGHT 75 NEWLINE /cr ',
+      .              'LEFT 3 RIGHT 75 NEWLINE /cr FLAG --- LEADER ---' )
+ 
+ 
+   This sets the NICEIO style to be the same as all of the other checker
+   routines. You can deviate from this if you've got a compelling reason to
+   do so, but this will likely lead to log files that have a non-uniform
+   style and are thus harder to read. Before the new checker returns you
+   should insert the following call to reset the reporting style to what it
+   was before you started meddling with it.
+ 
+       CALL TSTLGS ( LOGSTY, ERRSTY )
+       RETURN
+ 
+   In between these pieces of code you should have the code that checks to
+   see that this part of the testing has been successful. The testing of
+   course will depend upon what you are doing and your code can be almost
+   anything. However, subroutine calls should be restricted to SPICELIB,
+   SUPPORT and Testing Utility routines.
+ 
+   Having performed your tests you need to decide upon detailed messages
+   that explain how a test failed or report what test was performed and the
+   conditions that led to success. You should also set a logical flag
+   FAILUR that indicates the success of your test. Once the messages have
+   been built and FAILUR set make the calls
+ 
+      CALL VRBLOG ( ' ',    FAILUR )
+      CALL VRBLOG ( MESSGE, FAILUR )
+ 
+   This will cause the message to be logged automatically in the correct
+   places if a failure occurred and to otherwise be displayed only if the
+   test program is running in verbose mode. (The first call spaces things
+   out nicely so that the report doesn't get too cramped.)
+ 
+   Note that you don't need to do anything about notifying the test
+   utilities that a failure occurs VRBLOG does that for you.
+ 
+ 
+Spice Specific Utilities.
+===========================================================================
+ 
+   Often when testing it is necessary to have a C-kernel or SP-kernel for
+   use during the test. It is usually a big nuisance to have to port
+   kernels as well as source code for the sole purpose of testing.
+   Moreover, since you cannot be sure what kernels will reside on target
+   machines, you can't rely on any particular files as being present when
+   you get to the target machine. For this reason there are a few test
+   utilities that will create test kernels for the sake of performing
+   testing. These test kernels should normally be removed from the test
+   directory once you are finished using them. Since these kernels are
+   created by the Test Utilities you don't have to worry about porting
+   kernels for use in testing.
+ 
+   The routines available for creating test kernels are:
+ 
+   TSTCK3 --- this routine creates a C-kernel containing 3 type 03
+   segments. The segments span 1 billion seconds. They begin on JAN 1, 1980
+   (ET). The routine also creates a companion SCLK kernel for use with the
+   C-kernel. Note that this C-kernel/ SCLK pair do not follow the rule that
+   the clock to use with the C-kernel can be computed by dividing the CK-id
+   by -1000 and keeping the integer portion of the quotient. Instead the ID
+   codes for the clock to use with each object in the C-kernel is specified
+   in the SCLK file. The ID codes of the objects in the kernel are -9999,
+   -10000, and -10001. The native frames of these objects are Galactic, FK4
+   and J2000 respectively.
+ 
+   TSTATD --- This routine doesn't create any kernels. However it will
+   produce the same attitude as do each of the segments in C-kernel created
+   by TSTCK3 in their native frames.
+ 
+   TSTPCK --- This routine creates a SPICE PCK kernels for loading into the
+   kernel pool. Aditionally you can automatically load and then delete the
+   resulting kernel. In this way you don't have to port a PCK file in order
+   to do your testing.
+ 
+   TSTTXT --- This routine allows you to build (and optionally load) a text
+   kernel kernel from a buffer of text you store in your test program. This
+   way you can easily port your test programs and not deal with the
+   problems of porting your test kernels along with your test code.
+ 
+   TSTSPK --- This routine creates an SPK file giving approximate positions
+   of all major bodies in the solar system. It is not an accurate ephemeris
+   and is intended only for use in testing. Retrieving SPKPVN states from
+   the SPK kernel should yield the same states as produced by TSTST.
+ 
+   TSTST --- This routine returns the same states as can be obtained from
+   the SPK kernel created by TSTSPK. Thus it provides an independent
+   mechanism for generating states when testing SPK and state related
+   software.
+ 

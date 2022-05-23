@@ -1,0 +1,777 @@
+-- PC --
+-- MICROSOFT VISUAL C++/64BIT --
+1.0.0
+N0066
+2021-JAN-26 13:50:13
+ 
+Testing --- Test Family: f_AberrationCorrection
+ 
+Passed  --- Test Family: f_AberrationCorrection
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_AngularUnits
+ 
+Passed  --- Test Family: f_AngularUnits
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_AxisAndAngle
+ 
+Passed  --- Test Family: f_AxisAndAngle
+        --- Successful tests for six of six test cases.
+ 
+ 
+Testing --- Test Family: f_Body
+ 
+Passed  --- Test Family: f_Body
+        --- Successful tests for twelve of twelve test cases.
+ 
+ 
+Testing --- Test Family: f_CK
+ 
+Passed  --- Test Family: f_CK
+        --- Successful tests for twenty-one of twenty-one test cases.
+ 
+ 
+Testing --- Test Family: f_CylindricalCoordinates
+ 
+Passed  --- Test Family: f_CylindricalCoordinates
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_DAF
+ 
+Passed  --- Test Family: f_DAF
+        --- Successful tests for twenty-seven of twenty-seven test cases.
+ 
+ 
+Testing --- Test Family: f_DistanceUnits
+ 
+Passed  --- Test Family: f_DistanceUnits
+        --- Successful tests for two of two test cases.
+ 
+ 
+Testing --- Test Family: f_Ellipse
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Ellipse
+CASE   : Test Case 8. Test toString.
+ 
+ 
+  --- The value of outStr was not the value expected.
+  --- The value was:
+  ---    'Center, Semi-major axis, Semi-minor
+  ---    axis:
+(-1,0000000000000000e-100, -2,0000000000000000e-100,
+  ---    -3,0000000000000000e-100)
+(  0,0000000000000000e+00,
+  ---    1,0000000000000000e-100,   0,0000000000000000e+00)
+(
+  ---    0,0000000000000000e+00,   0,0000000000000
+FAILURE for Test Family: f_Ellipse
+                       : One of eight test cases failed.
+ 
+ 
+Testing --- Test Family: f_EllipsePlaneIntercept
+ 
+Passed  --- Test Family: f_EllipsePlaneIntercept
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_Ellipsoid
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Ellipsoid
+CASE   : Test Case 7. Test toString.
+ 
+ 
+  --- The value of e0.toString() (0) was not the value expected.
+  --- The value was:
+  ---    'Ellipsoid Radii:
+( 1,0000000000000000e-100,
+  ---    2,0000000000000000e-200,  3,0000000000000000e-300)'
+  --- the expected value was:
+  ---    'Ellipsoid Radii:
+( 1.0000000000000000e-100,
+  ---    2.0000000000000000e-200,  3.0000000000000000e-300)'
+FAILURE for Test Family: f_Ellipsoid
+                       : One of seven test cases failed.
+ 
+ 
+Testing --- Test Family: f_EllipsoidLineNearPoint
+ 
+Passed  --- Test Family: f_EllipsoidLineNearPoint
+        --- Successful tests for one of one test cases.
+ 
+ 
+Testing --- Test Family: f_EllipsoidPointNearPoint
+ 
+Passed  --- Test Family: f_EllipsoidPointNearPoint
+        --- Successful tests for two of two test cases.
+ 
+ 
+Testing --- Test Family: f_EulerAngles
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_EulerAngles
+CASE   : Test Case 17. Test toString.
+ 
+ 
+  --- The value of outStr was not the value expected.
+  --- The value was:
+  ---    '[-1,0000000000000000e-100 (deg)]  [-2,0000000000000000e-200
+  ---    (deg)]  [-3,0000000000000000e-300 (deg)]
+
+  ---    3                                 1
+  ---    3'
+  --- the expected value was:
+  ---    '[
+FAILURE for Test Family: f_EulerAngles
+                       : One of eighteen test cases failed.
+ 
+ 
+Testing --- Test Family: f_EulerState
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_EulerState
+CASE   : Test Case 14. Test toString.
+ 
+ 
+  --- The value of outStr was not the value expected.
+  --- The value was:
+  ---    '[-1,0000000000000000e-100 (deg)]  [-2,0000000000000000e-100
+  ---    (deg)]  [-3,0000000000000000e-100 (deg)]
+
+  ---    3                                 1
+  ---    2
+ -4,0000000000000000e-100          -5,0000
+FAILURE for Test Family: f_EulerState
+                       : One of fifteen test cases failed.
+ 
+ 
+Testing --- Test Family: f_FOV
+ 
+Passed  --- Test Family: f_FOV
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_FrameInfo
+ 
+Passed  --- Test Family: f_FrameInfo
+        --- Successful tests for seven of seven test cases.
+ 
+ 
+Testing --- Test Family: f_GFAngularSeparationSearch
+ 
+Passed  --- Test Family: f_GFAngularSeparationSearch
+        --- Successful tests for twenty-one of twenty-one test cases.
+ 
+ 
+Testing --- Test Family: f_GFConstraint
+ 
+Passed  --- Test Family: f_GFConstraint
+        --- Successful tests for fourteen of fourteen test cases.
+ 
+ 
+Testing --- Test Family: f_GFDistanceSearch
+ 
+Passed  --- Test Family: f_GFDistanceSearch
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_GFIlluminationAngleSearch
+ 
+Passed  --- Test Family: f_GFIlluminationAngleSearch
+        --- Successful tests for one hundred sixty-two of one hundred
+            sixty-two test cases.
+ 
+ 
+Testing --- Test Family: f_GFOccultationSearch
+ 
+Passed  --- Test Family: f_GFOccultationSearch
+        --- Successful tests for seven of seven test cases.
+ 
+ 
+Testing --- Test Family: f_GFPhaseAngleSearch
+ 
+Passed  --- Test Family: f_GFPhaseAngleSearch
+        --- Successful tests for twenty-three of twenty-three test cases.
+ 
+ 
+Testing --- Test Family: f_GFPositionCoordinateSearch
+ 
+Passed  --- Test Family: f_GFPositionCoordinateSearch
+        --- Successful tests for thirty-three of thirty-three test cases.
+ 
+ 
+Testing --- Test Family: f_GFRangeRateSearch
+ 
+Passed  --- Test Family: f_GFRangeRateSearch
+        --- Successful tests for thirty-three of thirty-three test cases.
+ 
+ 
+Testing --- Test Family: f_GFRayInFOVSearch
+ 
+Passed  --- Test Family: f_GFRayInFOVSearch
+        --- Successful tests for seven of seven test cases.
+ 
+ 
+Testing --- Test Family: f_GFSubObserverCoordinateSearch
+ 
+Passed  --- Test Family: f_GFSubObserverCoordinateSearch
+        --- Successful tests for thirty-six of thirty-six test cases.
+ 
+ 
+Testing --- Test Family: f_GFSurfaceInterceptCoordinateSearch
+ 
+Passed  --- Test Family: f_GFSurfaceInterceptCoordinateSearch
+        --- Successful tests for seventy-nine of seventy-nine test cases.
+ 
+ 
+Testing --- Test Family: f_GFTargetInFOVSearch
+ 
+Passed  --- Test Family: f_GFTargetInFOVSearch
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_GFUserDefinedScalarSearch
+ 
+Passed  --- Test Family: f_GFUserDefinedScalarSearch
+        --- Successful tests for three of three test cases.
+ 
+ 
+Testing --- Test Family: f_GeodeticCoordinates
+ 
+Passed  --- Test Family: f_GeodeticCoordinates
+        --- Successful tests for ten of ten test cases.
+ 
+ 
+Testing --- Test Family: f_Geometry02
+ 
+Passed  --- Test Family: f_Geometry02
+        --- Successful tests for twenty-four of twenty-four test cases.
+ 
+ 
+Testing --- Test Family: f_Instrument
+ 
+Passed  --- Test Family: f_Instrument
+        --- Successful tests for nine of nine test cases.
+ 
+ 
+Testing --- Test Family: f_JEDDuration
+ 
+Passed  --- Test Family: f_JEDDuration
+        --- Successful tests for sixteen of sixteen test cases.
+ 
+ 
+Testing --- Test Family: f_JEDTime
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_JEDTime
+CASE   : Test Case 13. Recover time string using default format.
+ 
+ 
+  --- The value of timstr was not the value expected.
+  --- The value was:
+  ---    '2451546,000000000 (JED)'
+  --- the expected value was:
+  ---    '2451546.000000000 (JED)'.
+FAILURE for Test Family: f_JEDTime
+                       : One of twenty-seven test cases failed.
+ 
+ 
+Testing --- Test Family: f_KernelDatabase
+ 
+Passed  --- Test Family: f_KernelDatabase
+        --- Successful tests for thirteen of thirteen test cases.
+ 
+ 
+Testing --- Test Family: f_KernelPool
+ 
+Passed  --- Test Family: f_KernelPool
+        --- Successful tests for forty-eight of forty-eight test cases.
+ 
+ 
+Testing --- Test Family: f_LatitudinalCoordinates
+ 
+Passed  --- Test Family: f_LatitudinalCoordinates
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_Line
+ 
+Passed  --- Test Family: f_Line
+        --- Successful tests for seven of seven test cases.
+ 
+ 
+Testing --- Test Family: f_LocalSolarTime
+ 
+Passed  --- Test Family: f_LocalSolarTime
+        --- Successful tests for six of six test cases.
+ 
+ 
+Testing --- Test Family: f_Matrix33
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Matrix33
+CASE   : Test Case 34. Test toString.
+ 
+ 
+  --- The value of xvec0.toString() (0) was not the value expected.
+  --- The value was:
+  ---    '-1,0000000000000000e-100, -2,0000000000000000e-200,
+  ---    -3,0000000000000000e-300,
+-4,0000000000000000e-100,
+  ---    -5,0000000000000000e-200,
+  ---    -6,0000000000000000e-300,
+-7,0000000000000000e-100,
+  ---    -8,0000000000000000e-200, -9,0000000000000000e-30
+FAILURE for Test Family: f_Matrix33
+                       : One of thirty-six test cases failed.
+ 
+ 
+Testing --- Test Family: f_Matrix66
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Matrix66
+CASE   : Test Case 21. Test toString.
+ 
+ 
+  --- The value of m0.toString() was not the value expected.
+  --- The value was:
+  ---    '
+
+Upper left block:
+
+-4,3601508761683463e-106,
+  ---    -8,7203017523366930e-106,
+  ---    -1,3080452628505039e-105,
+-3,0521056133178424e-105,
+  ---    -3,4881207009346770e-105,
+  ---    -3,9241357885515120e-105,
+-5,6681961390188500e-105,
+  ---    -6,1042112266356850e-105, -6,54
+FAILURE for Test Family: f_Matrix66
+                       : One of twenty-two test cases failed.
+ 
+ 
+Testing --- Test Family: f_OsculatingElements
+ 
+Passed  --- Test Family: f_OsculatingElements
+        --- Successful tests for nineteen of nineteen test cases.
+ 
+ 
+Testing --- Test Family: f_PhysicalConstants
+ 
+Passed  --- Test Family: f_PhysicalConstants
+        --- Successful tests for one of one test cases.
+ 
+ 
+Testing --- Test Family: f_Plane
+ 
+Passed  --- Test Family: f_Plane
+        --- Successful tests for thirteen of thirteen test cases.
+ 
+ 
+Testing --- Test Family: f_PlanetographicCoordinates
+ 
+Passed  --- Test Family: f_PlanetographicCoordinates
+        --- Successful tests for eleven of eleven test cases.
+ 
+ 
+Testing --- Test Family: f_PointingAndAVRecord
+ 
+Passed  --- Test Family: f_PointingAndAVRecord
+        --- Successful tests for thirteen of thirteen test cases.
+ 
+ 
+Testing --- Test Family: f_PointingRecord
+ 
+Passed  --- Test Family: f_PointingRecord
+        --- Successful tests for twelve of twelve test cases.
+ 
+ 
+Testing --- Test Family: f_PositionRecord
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_PositionRecord
+CASE   : Test Case 7. Test toString method.
+ 
+ 
+  --- The value of display string was not the value expected.
+  --- The value was:
+  ---    '
+Position vector = 
+
+    X:   3,0000000000000000e+00 (km)
+
+  ---    Y:   4,0000000000000000e+00 (km)
+    Z:   1,2000000000000000e+01
+  ---    (km)
+
+Distance           =   1,3000000000000000e+01 (km)
+One
+  ---    way light time =   1,0000000000000000e+01 (
+FAILURE for Test Family: f_PositionRecord
+                       : One of eight test cases failed.
+ 
+ 
+Testing --- Test Family: f_PositionVector
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_PositionVector
+CASE   : Test Case 8. Test toString method.
+ 
+ 
+  --- The value of display string was not the value expected.
+  --- The value was:
+  ---    '
+Position vector = 
+
+    X:   3,0000000000000000e+00 (km)
+
+  ---    Y:   4,0000000000000000e+00 (km)
+    Z:   1,2000000000000000e+01
+  ---    (km)
+
+Distance =   1,3000000000000000e+01 (km)
+'
+  --- the expected value was:
+  ---    '
+Position vec
+FAILURE for Test Family: f_PositionVector
+                       : One of nine test cases failed.
+ 
+ 
+Testing --- Test Family: f_RADecCoordinates
+ 
+Passed  --- Test Family: f_RADecCoordinates
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_Ray
+ 
+Passed  --- Test Family: f_Ray
+        --- Successful tests for four of four test cases.
+ 
+ 
+Testing --- Test Family: f_RayEllipsoidIntercept
+ 
+Passed  --- Test Family: f_RayEllipsoidIntercept
+        --- Successful tests for three of three test cases.
+ 
+ 
+Testing --- Test Family: f_RayPlaneIntercept
+ 
+Passed  --- Test Family: f_RayPlaneIntercept
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_ReferenceFrame
+ 
+Passed  --- Test Family: f_ReferenceFrame
+        --- Successful tests for nineteen of nineteen test cases.
+ 
+ 
+Testing --- Test Family: f_RotationAndAV
+ 
+Passed  --- Test Family: f_RotationAndAV
+        --- Successful tests for six of six test cases.
+ 
+ 
+Testing --- Test Family: f_SCLKDuration
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_SCLKDuration
+CASE   : Test Case 8. Test universal duration constructor: TDTDuration case.
+ 
+ 
+  --- The value of Exception compound message was not the value expected.
+  --- The value was:
+  ---    'CSPICE_N0066: CSPICE.sce2c: SPICE(VALUEOUTOFRANGE): [sce2c_c -->
+  ---    SCE2C --> SCEC01] Invalid SCLK rate.'
+  --- the expected value was:
+  ---    '<No exception expected>'.
+FAILURE for Test Family: f_SCLKDuration
+                       : One of eight test cases failed.
+ 
+ 
+Testing --- Test Family: f_SCLKTime
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_SCLKTime
+CASE   : Test Case 9. Test SCLK string constructor.
+ 
+ 
+  --- The value of Exception compound message was not the value expected.
+  --- The value was:
+  ---    'CSPICE_N0066: CSPICE.scencd: SPICE(NOTINPART): [scencd_c -->
+  ---    SCENCD] SCLK count 1/000123:9999 does not fall in the boundaries
+  ---    of partition number 1.'
+  --- the expected value was:
+  ---    '<No exception expected>'.
+FAILURE for Test Family: f_SCLKTime
+                       : One of ten test cases failed.
+ 
+ 
+Testing --- Test Family: f_SPK
+ 
+Passed  --- Test Family: f_SPK
+        --- Successful tests for eighteen of eighteen test cases.
+ 
+ 
+Testing --- Test Family: f_SphericalCoordinates
+ 
+Passed  --- Test Family: f_SphericalCoordinates
+        --- Successful tests for eight of eight test cases.
+ 
+ 
+Testing --- Test Family: f_SpiceQuaternion
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_SpiceQuaternion
+CASE   : Test Case 24. Test toString.
+ 
+ 
+  --- The value of outStr was not the value expected.
+  --- The value was:
+  ---    '(-1,0000000000000000e-100,
+ -2,0000000000000000e-100,
+  ---    -3,0000000000000000e-100, -4,0000000000000000e-100)'
+  --- the expected value was:
+  ---    '(-1.0000000000000000e-100,
+ -2.0000000000000000e-100,
+  ---    -3.0000000000000000e-100, -4.00000000000000
+FAILURE for Test Family: f_SpiceQuaternion
+                       : One of twenty-four test cases failed.
+ 
+ 
+Testing --- Test Family: f_SpiceWindow
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_SpiceWindow
+CASE   : Test Case 28. toString test: window with three intervals
+ 
+ 
+  --- The value of outStr was not the value expected.
+  --- The value was:
+  ---    '
+[-4,0000000000000000e-200,
+  ---    -3,0000000000000000e-200]
+[-2,0000000000000000e-200,
+  ---    -1,0000000000000000e-200]
+
+'
+  --- the expected value was:
+  ---    '
+[-4.0000000000000000e-200,
+  ---    -3.0000000000000000e-200]
+[-2.0000000000000000e-200, -1.000000
+FAILURE for Test Family: f_SpiceWindow
+                       : One of twenty-nine test cases failed.
+ 
+ 
+Testing --- Test Family: f_StateRecord
+ 
+Passed  --- Test Family: f_StateRecord
+        --- Successful tests for nineteen of nineteen test cases.
+ 
+ 
+Testing --- Test Family: f_StateVector
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_StateVector
+CASE   : Test Case 20. Test toString method.
+ 
+ 
+  --- The value of display string was not the value expected.
+  --- The value was:
+  ---    '
+State vector =
+
+    X:   9,0000000000000000e+00 (km)
+    Y:
+  ---    1,2000000000000000e+01 (km)
+    Z:   3,6000000000000000e+01
+  ---    (km)
+   VX:   1,2000000000000000e+01 (km/s)
+   VY:
+  ---    1,6000000000000000e+01 (km/s)
+   VZ:   4,80000000000000
+FAILURE for Test Family: f_StateVector
+                       : One of twenty-one test cases failed.
+ 
+ 
+Testing --- Test Family: f_TDBDuration
+ 
+Passed  --- Test Family: f_TDBDuration
+        --- Successful tests for sixteen of sixteen test cases.
+ 
+ 
+Testing --- Test Family: f_TDBTime
+ 
+Passed  --- Test Family: f_TDBTime
+        --- Successful tests for twenty-six of twenty-six test cases.
+ 
+ 
+Testing --- Test Family: f_TDTDuration
+ 
+Passed  --- Test Family: f_TDTDuration
+        --- Successful tests for seventeen of seventeen test cases.
+ 
+ 
+Testing --- Test Family: f_TDTTime
+ 
+Passed  --- Test Family: f_TDTTime
+        --- Successful tests for twenty-six of twenty-six test cases.
+ 
+ 
+Testing --- Test Family: f_TextIO
+ 
+Passed  --- Test Family: f_TextIO
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_TimeConstants
+ 
+Passed  --- Test Family: f_TimeConstants
+        --- Successful tests for five of five test cases.
+ 
+ 
+Testing --- Test Family: f_TimeSystem
+ 
+Passed  --- Test Family: f_TimeSystem
+        --- Successful tests for one of one test cases.
+ 
+ 
+Testing --- Test Family: f_Units
+ 
+Passed  --- Test Family: f_Units
+        --- Successful tests for three of three test cases.
+ 
+ 
+Testing --- Test Family: f_Vector3
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Vector3
+CASE   : Test Case 28. Vector operation tests - toString
+ 
+ 
+  --- The value of xvec0.toString() (0) was not the value expected.
+  --- The value was:
+  ---    '(-1,0000000000000000e-100, -2,0000000000000000e-200,
+  ---    -3,0000000000000000e-300)'
+  --- the expected value was:
+  ---    '(-1.0000000000000000e-100, -2.0000000000000000e-200,
+  ---    -3.0000000000000000e-300)'.
+ 
+  --- The value of xvec0.toString() (1) was not the value expected.
+  --- The value was:
+  ---    '( 1,0000000000000000e-100,  2,0000000000000000e-200,
+  ---    3,0000000000000000e-300)'
+  --- the expected value was:
+  ---    '( 1.0000000000000000e-100,  2.0000000000000000e-200,
+  ---    3.0000000000000000e-300)'.
+ 
+  --- The value of xvec0.toString() (2) was not the value expected.
+  --- The value was:
+  ---    '( 1,0000000000000000e+100,  2,0000000000000000e+200,
+  ---    3,0000000000000000e+300)'
+  --- the expected value was:
+  ---    '( 1.0000000000000000e+100,  2.0000000000000000e+200,
+  ---    3.0000000000000000e+300)'.
+ 
+  --- The value of xvec0.toString() (2) was not the value expected.
+  --- The value was:
+  ---    '(  1,0000000000000000e+00,   2,0000000000000000e+00,
+  ---    3,0000000000000000e+00)'
+  --- the expected value was:
+  ---    '(  1.0000000000000000e+00,   2.0000000000000000e+00,
+  ---    3.0000000000000000e+00)'.
+FAILURE for Test Family: f_Vector3
+                       : One of twenty-nine test cases failed.
+ 
+ 
+Testing --- Test Family: f_Vector6
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_Vector6
+CASE   : Test Case 23. Vector operation tests - toString
+ 
+ 
+  --- The value of xvec0.toString() (0) was not the value expected.
+  --- The value was:
+  ---    '(-1,0000000000000000e-100, -2,0000000000000000e-200,
+  ---    -3,0000000000000000e-300,
+ -4,0000000000000000e-301,
+  ---    -5,0000000000000000e-302, -6,0000000000000000e-303)'
+  --- the expected value was:
+  ---    '(-1.0000000000000000e-100, -2.00
+FAILURE for Test Family: f_Vector6
+                       : One of twenty-three test cases failed.
+ 
+ 
+Testing --- Test Family: f_VelocityVector
+ 
+ 
+A test failure occurred in the test family:
+ 
+Family : f_VelocityVector
+CASE   : Test Case 8. Test toString method.
+ 
+ 
+  --- The value of display string was not the value expected.
+  --- The value was:
+  ---    '
+Velocity vector = 
+
+    VX:   3,0000000000000000e+00 (km/s)
+
+  ---    VY:   4,0000000000000000e+00 (km/s)
+    VZ:
+  ---    1,2000000000000000e+01 (km/s)
+
+Speed =   1,3000000000000000e+01
+  ---    (km/s)
+'
+  --- the expected value was:
+  ---    '
+Velo
+FAILURE for Test Family: f_VelocityVector
+                       : One of nine test cases failed.
+ 
+2021-JAN-26 13:51:09
+ 

@@ -1,0 +1,7 @@
+ROOTSPICE=~/SPICE/JNISpice
+ROOTSOLARCOM=~/solarcom2
+echo "Path for SPICE = ${ROOTSPICE}"
+echo "Path for SolarCom = ${ROOTSOLARCOM}"
+cd ${ROOTSOLARCOM}
+javac -cp ${ROOTSPICE}/src/JNISpice -sourcepath ${ROOTSOLARCOM}/src ${ROOTSOLARCOM}/src/Main.java
+# ${ROOTSOLARCOM}/src/domain/*.java ${ROOTSOLARCOM}/src/persistence/*.java

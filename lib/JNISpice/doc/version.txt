@@ -1,0 +1,7 @@
+This file describes your current toolkit package.
+ 
+Creation Date: Fri Apr  7 18:29:16 PDT 2017 
+ 
+Version Information
+ 
+               JNISpice.............V.N0066
