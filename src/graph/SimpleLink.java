@@ -1,24 +1,26 @@
 package graph;
 
-public class SimpleEdge implements Edge{
+import links.Link;
+import nodes.Node;
 
-    Vertex src;
-    Vertex dest;
+public class SimpleLink extends Link {
+
+    Node src;
+    Node dest;
     double weight;
 
-    public SimpleEdge(Vertex src, Vertex dest, double weight) {
-        this.src = src;
-        this.dest = dest;
+    public SimpleLink(Node src, Node dest, double weight) {
+        super(src, dest);
         this.weight = weight;
     }
 
     @Override
-    public Vertex getSrc() {
+    public Node getSrc() {
         return src;
     }
 
     @Override
-    public Vertex getDest() {
+    public Node getDest() {
         return dest;
     }
 

@@ -19,5 +19,7 @@
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module" module-name="lib" />
+    <orderEntry type="library" name="yaml.snakeyaml" level="project" />
+    <orderEntry type="library" name="jgrapht.core" level="project" />
   </component>
 </module>

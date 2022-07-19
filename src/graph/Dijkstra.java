@@ -1,5 +1,8 @@
 package graph;
 
+import links.Link;
+import nodes.Node;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,11 +10,11 @@ class VertexState {
 
     double dist;
     boolean visited;
-    Vertex prev;
+    Node prev;
 
-    Vertex vertex;
+    Node vertex;
 
-    VertexState(Vertex v) {
+    VertexState(Node v) {
         this.vertex = v;
         reset();
     }
@@ -25,16 +28,16 @@ class VertexState {
 
 public class Dijkstra {
 
-    HashMap<Vertex, VertexState> states;
+    HashMap<Node, VertexState> states;
 
     public Dijkstra() {
         states = new HashMap<>();
     }
 
 
-    private void initializeShortestPath(Graph g, Vertex s) {
+    private void initializeShortestPath(Graph g, Node s) {
         states = new HashMap<>();
-        for (Vertex v: g.V) {
+        for (Node v: g.V) {
             states.put(v, new VertexState(v));
         }
         states.get(s).dist = 0.0;
@@ -69,7 +72,7 @@ public class Dijkstra {
     }
 
 
-    public double shortestPath(Graph g, Vertex src, Vertex dest) {
+    public double shortestPath(Graph g, Node src, Node dest) {
         initializeShortestPath(g, src);
 
         while (true) {
@@ -77,11 +80,11 @@ public class Dijkstra {
             VertexState u = extractMin();
             if (u.vertex.equals(dest)) {return u.dist;}
             u.visited = true;
-            List<Vertex> adj = g.getAdjacency(u.vertex);
+            List<Node> adj = g.getAdjacency(u.vertex);
 
-            for(Vertex vv: adj) {
+            for(Node vv: adj) {
                 VertexState v = states.get(vv);
-                Edge e = g.getEdge(u.vertex,v.vertex);
+                Link e = g.getEdge(u.vertex,v.vertex);
                 relax(u,v,e.getWeight());
             }
         }

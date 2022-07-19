@@ -1,0 +1,4 @@
+ROOTSPICE=~/SPICE/JNISpice
+ROOTSOLARCOM=~/solarcom2
+cd ${SOLARCOM}
+java -cp ${ROOTSPICE}/src/JNISpice:${ROOTSOLARCOM}/src -Djava.library.path=${ROOTSPICE}/lib -jar ${ROOTSOLARCOM}/out/artifacts/solarcom2_jar/solarcom2.jar ${ROOTSOLARCOM}/provaInput.yaml
