@@ -9,55 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added Spice. Fixed package issue.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jgrapht_core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/yaml_snakeyaml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/JNISpice/src/JNISpice/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jgrapht-core-1.5.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jheaps-0.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/snakeyaml-1.30.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naif0007.tls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prova.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/provaInput.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runLinuxJar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/id/IDGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/input/InputReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/input/InputYaml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kernelmanager/KernelManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/links/FictitiousLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/links/RadioLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nodes/BodyNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nodes/FictitiousNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nodes/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/Bodie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/ConstantPosBodie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/SpiceBodie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ExamplesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/GraphLibraryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/GraphTest.javapene" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/IDGeneratorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/InputTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/KernelManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SpaceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/metakernels/GFOccultationSearchEx1.tm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/metakernels/OccultationStateEx1.tm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solarcom2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/solarcom2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Dijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/SimpleEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/SimpleLink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/SimpleVertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/SimpleNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Vertex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SpiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpiceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added Spice. Fixed package issue." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653320599092</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Spice. Fixed package issue.">
+      <created>1658222277673</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658222277673</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
