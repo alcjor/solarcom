@@ -9,7 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added Spice. Fixed package issue." />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graph/JGraphTGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GraphTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Dijkstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/SimpleLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/SimpleNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTest.javapene" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,18 +89,7 @@
       <recent name="id" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GraphLibraryTest.stackoverflowtest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <envs>
-        <env name="ROOTSPICE" value="~/SPICE/JNISpice" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="src.Main" />
-      <module name="solarcom2" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.GraphTest.shortestPathTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
@@ -131,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IDGeneratorTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GraphTest.shortestPathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
@@ -140,7 +139,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.IDGeneratorTest" />
+      <option name="MAIN_CLASS_NAME" value="test.java.GraphTest" />
+      <option name="METHOD_NAME" value="shortestPathTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.GraphTest" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
@@ -174,19 +190,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.GraphTest.shortestPathTest" />
+      <item itemvalue="JUnit.GraphTest.test" />
       <item itemvalue="JUnit.GraphLibraryTest.stackoverflowtest" />
-      <item itemvalue="JUnit.IDGeneratorTest.test" />
       <item itemvalue="JUnit.SpaceTest.spiceBodyTest" />
       <item itemvalue="JUnit.GraphLibraryTest.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GraphTest.shortestPathTest" />
+        <item itemvalue="JUnit.GraphTest.test" />
         <item itemvalue="JUnit.GraphLibraryTest.stackoverflowtest" />
         <item itemvalue="JUnit.GraphLibraryTest.test" />
         <item itemvalue="JUnit.SpaceTest.spiceBodyTest" />
-        <item itemvalue="JUnit.IDGeneratorTest.test" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658222277673</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=".">
+      <created>1658222613096</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658222613096</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -259,6 +282,7 @@
     <MESSAGE value="Added junit" />
     <MESSAGE value="Refactored code. Added Dijsktra test." />
     <MESSAGE value="Added Spice. Fixed package issue." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Spice. Fixed package issue." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
