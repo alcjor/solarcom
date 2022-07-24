@@ -9,16 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graph/JGraphTGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/GraphTest.java" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented facade for JGraphT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Dijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/SimpleLink.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/SimpleNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GraphTest.javapene" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/links/ContactPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/Bodie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ConstantPosBodie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/SpiceBodie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpaceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,43 +86,9 @@
       <recent name="id" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GraphTest.shortestPathTest">
+  <component name="RunManager" selected="JUnit.SpaceTest.occLgsTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphLibraryTest.stackoverflowtest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.GraphLibraryTest" />
-      <option name="METHOD_NAME" value="stackoverflowtest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphLibraryTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.GraphLibraryTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,6 +127,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpaceTest.occLgsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.SpaceTest" />
+      <option name="METHOD_NAME" value="occLgsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceTest.solarInterferenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.SpaceTest" />
+      <option name="METHOD_NAME" value="solarInterferenceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpaceTest.spiceBodyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
@@ -190,19 +187,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.SpaceTest.occLgsTest" />
+      <item itemvalue="JUnit.SpaceTest.solarInterferenceTest" />
       <item itemvalue="JUnit.GraphTest.shortestPathTest" />
       <item itemvalue="JUnit.GraphTest.test" />
-      <item itemvalue="JUnit.GraphLibraryTest.stackoverflowtest" />
       <item itemvalue="JUnit.SpaceTest.spiceBodyTest" />
-      <item itemvalue="JUnit.GraphLibraryTest.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpaceTest.occLgsTest" />
+        <item itemvalue="JUnit.SpaceTest.spiceBodyTest" />
+        <item itemvalue="JUnit.SpaceTest.solarInterferenceTest" />
         <item itemvalue="JUnit.GraphTest.shortestPathTest" />
         <item itemvalue="JUnit.GraphTest.test" />
-        <item itemvalue="JUnit.GraphLibraryTest.stackoverflowtest" />
-        <item itemvalue="JUnit.GraphLibraryTest.test" />
-        <item itemvalue="JUnit.SpaceTest.spiceBodyTest" />
       </list>
     </recent_temporary>
   </component>
@@ -257,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658222613096</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented facade for JGraphT">
+      <created>1658240105812</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658240105813</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -283,6 +287,7 @@
     <MESSAGE value="Refactored code. Added Dijsktra test." />
     <MESSAGE value="Added Spice. Fixed package issue." />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Implemented facade for JGraphT" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented facade for JGraphT" />
   </component>
 </project>
