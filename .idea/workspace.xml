@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented facade for JGraphT">
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented contact plan">
+      <change afterPath="$PROJECT_DIR$/src/links/CommunicationParameters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/links/OneHopLink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/ContactPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/Bodie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ConstantPosBodie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/SpiceBodie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpaceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658240105813</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented contact plan">
+      <created>1658653257327</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658653257327</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -288,6 +292,7 @@
     <MESSAGE value="Added Spice. Fixed package issue." />
     <MESSAGE value="." />
     <MESSAGE value="Implemented facade for JGraphT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented facade for JGraphT" />
+    <MESSAGE value="Implemented contact plan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented contact plan" />
   </component>
 </project>
