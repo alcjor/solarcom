@@ -1,7 +1,7 @@
 package test.java;
 
 import kernelmanager.KernelManager;
-import links.ContactPlan;
+import links.ContactPlanOld;
 import org.junit.Test;
 import spice.basic.Body;
 import spice.basic.ReferenceFrame;
@@ -35,7 +35,7 @@ public class SpaceTest {
 
         TDBTime et = new TDBTime( "2014-JAN-2 1:15:00 UTC" );
 
-        ContactPlan cp = new ContactPlan(new Body[]{front});
+        ContactPlanOld cp = new ContactPlanOld(new Body[]{front});
 
         boolean occult = cp.calcOccultation(front, frameFront, back, frameBack, obsr, et);
         assert occult == false;
@@ -52,7 +52,7 @@ public class SpaceTest {
         km.loadKernel("stations.bsp");
         km.loadKernel("de421.bsp");
 
-        ContactPlan cp = new ContactPlan(new Body[]{});
+        ContactPlanOld cp = new ContactPlanOld(new Body[]{});
 
         boolean solarInterf = cp.calcSolarInterference(
                 new Body("MOON"),
@@ -77,7 +77,7 @@ public class SpaceTest {
         km.loadKernel("earth_000101_220717_220423.bpc");
         km.loadKernel("earthstn.bsp");
 
-        ContactPlan cp = new ContactPlan(new Body[]{});
+        ContactPlanOld cp = new ContactPlanOld(new Body[]{});
         boolean occ1 = cp.calcOccLgs(
                 new Body("DSS-45"), new ReferenceFrame("DSS-45_TOPO"), "GROUND_STATION",
                 new Body("MRO"), new ReferenceFrame("MRO_SPACECRAFT"), "SATELLITE",

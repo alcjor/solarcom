@@ -4,8 +4,8 @@ import nodes.Node;
 
 public abstract class Link {
 
-    private Node src;
-    private Node dest;
+    Node src;
+    Node dest;
     private double weight;
 
     protected Link(Node src, Node dest) {

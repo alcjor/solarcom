@@ -47,9 +47,52 @@ public class CommunicationParameters {
             double elev = latB * 180/Math.PI;
             DSNLinkParameters dsnlp = new DSNLinkParameters(node1.getName(), band, "transmit", elev, freq, CD);
             double Lt = 0;
+        } else {
+            ReferenceFrame j2000 = new ReferenceFrame("J2000");
+            StateRecord s = new StateRecord(node2, time, j2000, abcorr, node1);
+            SpacecraftLinkParameters slp = new SpacecraftLinkParameters(node1.getName(), node1type, band, "transmit");
         }
 
+        // Reciever parameters
+        band = ITUBand(freq, "recieve");
+        if (node2type == "GROUND_STATION") {
+            StateRecord s = new StateRecord(node1, time, node2ref, abcorr, node2);
+            double r = s.norm();
+            double[] reclat = CSPICE.reclat(s.getPosition().toArray());
+            double latB = reclat[2];
+            double elev = latB * 180/Math.PI;
+            DSNLinkParameters dsnlp = new DSNLinkParameters(node2.getName(), band, "recieve", elev, freq, CD);
+            double L = Lt;
+            double SNRmin = sensitivity34(node2);
+        } else {
+            SpacecraftLinkParameters slp = new SpacecraftLinkParameters(node2.getName(), node2type, band, "transmit");
+            double L = Lt+Lr;
+            double SNRmin = 10;
+        }
 
+        // Total System Noise Temperature
+        double Tsys = Tr + Tamwt;
+//        TODO
+//        if (node2type == "PLANET") {
+//            StateRecord s1 = new StateRecord(node2, time, j2000, NONE, node1);
+//            StateRecord s2 = new StateRecord(node2, time, j2)
+//        }
+        Tsys = 10*Math.log10(Tsys);
+
+        double Ls = 147.56-20*Math.log10(r*1e3)-20*Math.log10(f);
+
+        L = Ls;
+    }
+
+    private double sensitivity34(Body node) throws SpiceException {
+        switch (node.getName()) {
+            case "DSS-45":
+                return 7;
+            case "DSS-15":
+                return 9;
+            case "DSS-65":
+                return 7;
+        }
     }
 
 

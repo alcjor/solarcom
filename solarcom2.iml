@@ -21,5 +21,7 @@
     <orderEntry type="module" module-name="lib" />
     <orderEntry type="library" name="yaml.snakeyaml" level="project" />
     <orderEntry type="library" name="jgrapht.core" level="project" />
+    <orderEntry type="library" name="github.sh0nk.matplotlib4j" level="project" />
+    <orderEntry type="library" name="opencsv" level="project" />
   </component>
 </module>
