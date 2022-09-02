@@ -43,13 +43,20 @@ public class DSNComm implements CommunicationStrategy {
 //        double freq = 0;
 //        double CD = 0;
 //        double elevation = 10;
-        double CD = this.params.get("CD", band);
+        double CD = 0;
+        double a;
         double elevation = self.elevation(other);
-        double a = calcAtmosphericAttenuation(band, CD, elevation);
+        try {
+            CD = this.params.get("CD", band);
+            a = calcAtmosphericAttenuation(band, CD, elevation);
+        } catch (NullPointerException e) {
+            a = calcAtmosphericAttenuation(band, elevation);
+        }
+
         double G = params.get("G0t", band) - Math.pow(params.get("G1", band)
                 *(elevation - params.get("gamma", band)),2) - a;
 
-        return G + 20*Math.log10(freq/params.get("f0", band));
+        return G + 20*Math.log10(freq*1e-6/params.get("f0t", band));
     }
 
     public double get_Gr(String band, double freq, Body self, Body other) {
@@ -59,13 +66,21 @@ public class DSNComm implements CommunicationStrategy {
 //        double freq = 7.15e9;
 //        double CD = 0;
 //        double elevation = 0;
-        double CD = this.params.get("CD", band);
+        double CD  = 0;
+        double a;
         double elevation = self.elevation(other);
-        double a = calcAtmosphericAttenuation(band, CD, elevation);
+
+        try {
+            CD = this.params.get("CD", band);
+            a = calcAtmosphericAttenuation(band, CD, elevation);
+        } catch (NullPointerException e) {
+            a = calcAtmosphericAttenuation(band, elevation);
+        }
+
         double G = params.get("G0r", band) - Math.pow(params.get("G1", band)
                 *(elevation - params.get("gamma", band)),2) - a;
 
-        return G + 20*Math.log10(freq/params.get("f0", band));
+        return G + 20*Math.log10(freq*1e-6/params.get("f0r", band));
     }
 
     public double get_ARt(String band, double freq, Body self, Body other) {
@@ -83,10 +98,16 @@ public class DSNComm implements CommunicationStrategy {
 //        double freq = 0;
 //        double CD = 0;
 //        double elevation = 0;
-        double CD = this.params.get("CD", band);
-        double elevation = self.elevation(other);
-        double a = calcAtmosphericAttenuation(band, CD, elevation);
 
+        double CD = 0;
+        double a;
+        double elevation = self.elevation(other);
+        try {
+            CD = this.params.get("CD", band);
+            a = calcAtmosphericAttenuation(band, CD, elevation);
+        } catch (NullPointerException e) {
+            a = calcAtmosphericAttenuation(band, elevation);
+        }
 
         double lossFactor = Math.pow(10, a/10);
 

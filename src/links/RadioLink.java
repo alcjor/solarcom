@@ -40,20 +40,25 @@ public class RadioLink extends Link {
         double EIRP = tx.get_Pt(band, freq, src.getBody(), dest.getBody())
                 + tx.get_Gt(band, freq, src.getBody(), dest.getBody());
 
+        System.out.println("OK EIRP: " + EIRP);
+
         double L = tx.get_loss(band, freq, src.getBody(), dest.getBody())
                 + rx.get_loss(band, freq, dest.getBody(), src.getBody());
         L += calcSpaceLoss(time);
         L += calcPolarizationLoss();
+
+        System.out.println("Loss: " + L);
 
         // change
         double Tsys = tx.get_Tamw(band, freq, src.getBody(), dest.getBody()) +
                 rx.get_Tamw(band, freq, dest.getBody(), src.getBody());
         Tsys += calcHotBodyNoiseTemp();
 
+        System.out.println("Tsys: " + Tsys);
 
         double Gr = rx.get_Gr(band, freq, dest.getBody(), src.getBody());
 
-        System.out.println("Gr: " + Gr);
+        System.out.println("OK Gr: " + Gr);
 
         double SNR = EIRP + Gr + L - Tsys + 228.6;
 

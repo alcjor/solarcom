@@ -6,6 +6,7 @@ public abstract class Body {
 
     protected String name;
     public HashMap params;
+    public boolean onSurface;
 
     protected HashMap<Class, DistanceHandler> distanceOpMap;
     protected HashMap<Class, ElevationHanlder> elevationOpMap;

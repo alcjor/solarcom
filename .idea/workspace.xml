@@ -9,53 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented sc params and half of dsn params">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/github_sh0nk_matplotlib4j.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_guava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/opencsv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ITUBands.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dss43.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/juno.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/checker-qual-3.12.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.9.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-collections4-4.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-lang3-3.12.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-text-1.9.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/error_prone_annotations-2.11.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/failureaccess-1.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/guava-15.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/guava-31.1-jre.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/j2objc-annotations-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jsr305-3.0.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/log4j-1.2.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/matplotlib4j-0.5.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/opencsv-5.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/slf4j-api-1.7.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/slf4j-log4j12-1.7.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/input/TableReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/links/ContactPlanOld.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/CommunicationStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/DSNComm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/SpacecraftComm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/SpiceTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/IntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/GuavaTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PeopleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PlotTest.java" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented body operations">
+      <change afterPath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MetaProgTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MyClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solarcom2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/solarcom2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/CommunicationParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/CommunicationParameters.javass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/links/ContactPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/links/RadioLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/RadioLink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/nodes/BodyNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/DSNComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/DSNComm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/KernelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/IntegrationTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +70,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/jordi/solarcom2/src/id&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/jordi/solarcom2&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
@@ -126,26 +91,9 @@
       <recent name="id" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegrationTest.test">
+  <component name="RunManager" selected="JUnit.ValidationTest.test">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GuavaTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.GuavaTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,13 +119,30 @@
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.IntegrationTest" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.IntegrationTest" />
       <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MetaProgTest.simpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.MetaProgTest" />
+      <option name="METHOD_NAME" value="simpleTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
@@ -201,7 +166,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlotTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ValidationTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
@@ -210,7 +175,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.PlotTest" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
@@ -227,19 +192,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ValidationTest.test" />
+      <item itemvalue="JUnit.MetaProgTest.simpleTest" />
       <item itemvalue="JUnit.IntegrationTest.test" />
       <item itemvalue="JUnit.PeopleTest.test" />
-      <item itemvalue="JUnit.GuavaTest.test" />
       <item itemvalue="JUnit.GuavaTest.testCSV" />
-      <item itemvalue="JUnit.PlotTest.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ValidationTest.test" />
+        <item itemvalue="JUnit.MetaProgTest.simpleTest" />
         <item itemvalue="JUnit.IntegrationTest.test" />
         <item itemvalue="JUnit.PeopleTest.test" />
         <item itemvalue="JUnit.GuavaTest.testCSV" />
-        <item itemvalue="JUnit.GuavaTest.test" />
-        <item itemvalue="JUnit.PlotTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -315,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659432428423</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implemented body operations">
+      <created>1660812062691</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1660812062692</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -345,6 +317,18 @@
     <MESSAGE value="Implemented facade for JGraphT" />
     <MESSAGE value="Implemented contact plan" />
     <MESSAGE value="Implemented sc params and half of dsn params" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented sc params and half of dsn params" />
+    <MESSAGE value="Implemented body operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented body operations" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ValidationTest.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

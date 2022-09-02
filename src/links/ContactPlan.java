@@ -1,16 +1,19 @@
 package links;
 
 import space.Body;
+import space.DSNComm;
 import space.KernelBody;
 import spice.basic.SpiceException;
 
 public class ContactPlan {
 
     private Body occultingBodies[];
+    private Body sun;
     private RadioLink rl;
 
-    public ContactPlan(RadioLink rl, Body[] occultingBodies) {
+    public ContactPlan(RadioLink rl, Body[] occultingBodies, Body sun) {
         this.occultingBodies = occultingBodies.clone();
+        this.sun = sun;
         this.rl = rl;
     }
 
@@ -23,7 +26,7 @@ public class ContactPlan {
         return false;
     }
 
-    public boolean calcSolarInterference(Body sun, double angle_param) {
+    public boolean calcSolarInterference(double angle_param) {
 
         double angle = rl.src.getBody().angularSep(rl.dest.getBody(), sun);
 
@@ -36,7 +39,25 @@ public class ContactPlan {
 
     public boolean calcOccLgs(double el_parameter) {
 
+        double elev;
+        if (rl.src.getBody().onSurface) {
+            elev = rl.src.getBody().elevation(rl.dest.getBody());
+            if (elev <= el_parameter) return true;
+        }
 
+        if (rl.dest.getBody().onSurface) {
+            elev = rl.dest.getBody().elevation(rl.src.getBody());
+            if (elev <= el_parameter) return true;
+        }
+
+        return false;
+    }
+
+    public boolean calcVisibility(double angle_solar_interf, double angle_occlgs) {
+        if (calcOccultation()) return false;
+        if (calcSolarInterference(angle_solar_interf)) return false;
+        if (calcOccLgs(angle_occlgs)) return false;
+        return true;
     }
 
 }

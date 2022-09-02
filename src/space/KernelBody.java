@@ -12,11 +12,12 @@ public class KernelBody extends space.Body {
     Body body;
     ReferenceFrame ref;
 
-    public KernelBody(String name, String ref) throws SpiceException {
+    public KernelBody(String name, String ref, boolean onSurface) throws SpiceException {
         super();
         this.name = name;
         this.ref = new ReferenceFrame(ref);
         this.body = new Body(name);
+        this.onSurface = onSurface;
 
 
     }
@@ -46,6 +47,9 @@ public class KernelBody extends space.Body {
         });
         angularSepOpMap.put(KernelBody.class, (x, y) -> {
             return angularSepKernel((KernelBody) x, (KernelBody) y);
+        });
+        occultationOpMap.put(KernelBody.class, (x,y) -> {
+            return occultationKernel((KernelBody) x, (KernelBody) y);
         });
 
     }
@@ -87,13 +91,17 @@ public class KernelBody extends space.Body {
 //        back = receiver, obsr = transmitter, front = occulting body
             TDBTime time = SpiceTime.getSpiceTime().getTime();
             occ = OccultationState.
-                    getOccultationState( other.body,  "POINT", other.ref,
+                    getOccultationState(
                             occulting.body,  "ELLIPSOID", occulting.ref,
+                            other.body,  "POINT", other.ref,
                             abcorr, this.body, time     );
+
             switch (occ) {
                 case ANNLR2:
                 case PARTL2:
                 case TOTAL2:
+//                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
+//                    System.out.println("Type of occultation: " + occ.name());
                     return true;
                 default:
                     return false;
