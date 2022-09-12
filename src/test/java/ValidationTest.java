@@ -3,15 +3,22 @@ package test.java;
 import com.github.sh0nk.matplotlib4j.Plot;
 import com.github.sh0nk.matplotlib4j.PythonConfig;
 import com.github.sh0nk.matplotlib4j.PythonExecutionException;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import kernelmanager.KernelManager;
 import links.ContactPlan;
 import links.RadioLink;
 import nodes.BodyNode;
 import org.junit.Test;
 import space.*;
+import spice.basic.Duration;
 import spice.basic.SpiceException;
+import spice.basic.TDBDuration;
 import spice.basic.TDBTime;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +37,7 @@ public class ValidationTest {
         KernelBody dsn = new KernelBody("DSS-45", "DSS-45_TOPO", true);
         BodyNode dsnnode = new BodyNode(dsn, dsncomm);
 
-        KernelManager km = new KernelManager("/home/jordi/SPICE/kernels",
+        KernelManager km = new KernelManager("/mnt/c/Users/jordi/Documents/SpiceKernels",
             "/home/jordi/SPICE");
 
 
@@ -75,9 +82,9 @@ public class ValidationTest {
         km.loadKernel("earthstn.bsp");
 
         RadioLink link = new RadioLink(mronode, dsnnode, 8.439444445999999e9, "X");
-//        SpiceTime.getSpiceTime().setTime(new TDBTime("2018 JAN 01 00:00:00 UTC")); // Occultation by MARS
+        SpiceTime.getSpiceTime().setTime(new TDBTime("2018 JAN 01 00:00:00 UTC")); // Occultation by MARS
 
-        SpiceTime.getSpiceTime().setTime(new TDBTime("2018 JAN 01 00:19:59.999999642 UTC")); // First time with visibility
+//        SpiceTime.getSpiceTime().setTime(new TDBTime("2018 JAN 01 00:19:59.9999996423721 UTC")); // First time with visibility
 // DR value: 1.466241347571773e+06
 
         Body[] occulting = {
@@ -89,14 +96,65 @@ public class ValidationTest {
 
         ContactPlan cp = new ContactPlan(link, occulting, new KernelBody("SUN", "IAU_SUN", false));
 
-//        System.out.println(cp.calcOccultation());
-//        System.out.println(cp.calcSolarInterference(2.3));
-//        System.out.println(cp.calcOccLgs(6));
-        System.out.println("Visibility: ");
-        System.out.println(cp.calcVisibility(2.3,6));
+//        double dr = link.calcDataRate(SpiceTime.getSpiceTime().getTime());
+//        System.out.println(dr);
 
-        System.out.println("DataRate: ");
-        System.out.println(link.calcDataRate(SpiceTime.getSpiceTime().getTime()));
+//        TDBTime start = new TDBTime("2018 JAN 01 21:58:50 UTC");
+        TDBTime start = new TDBTime("2018 JAN 02 00:00:00 UTC");
+        TDBTime end = new TDBTime("2018 JAN 15 00:00:00 UTC");
+
+//        TDBTime start = new TDBTime("2018 JAN 01 08:20:00 UTC");
+//        TDBTime end = new TDBTime("2018 JAN 01 00:50:00 UTC");
+        SpiceTime.getSpiceTime().setTime(start);
+        Duration step = new TDBDuration(60);
+        List<Double> times = new ArrayList<>();
+        List<Double> datarates = new ArrayList<>();
+
+        while (end.getTDBSeconds() >= SpiceTime.getSpiceTime().getTime().getTDBSeconds()) {
+            double dr = 0;
+//            System.out.println("Visibility: ");
+
+//            System.out.println(cp.calcVisibility(2.3,6));
+            if (cp.calcVisibility(2.3,6))
+//            System.out.println("DataRate: ");
+                dr = link.calcDataRate(SpiceTime.getSpiceTime().getTime(), 300, 12757);
+//            System.out.println(dr);
+
+            times.add(SpiceTime.getSpiceTime().getTime().getTDBSeconds());
+            datarates.add(dr);
+
+            SpiceTime.getSpiceTime().setTime(SpiceTime.getSpiceTime().getTime().add(step));
+//            break;
+        }
+
+        System.out.println(datarates.get(0));
+
+        try {
+            System.out.println("WRITING CSV");
+            List<String[]> data = new ArrayList<>();
+            CSVWriter writer = new CSVWriter(new FileWriter("/mnt/c/Users/jordi/Desktop/solarCom_code/result_java.csv"));
+            for (int i = 0; i < datarates.size(); i++) {
+                data.add(new String[]{times.get(i).toString(), datarates.get(i).toString()});
+            }
+            writer.writeAll(data);
+            writer.close();
+            System.out.println("WROTE CSV");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/usr/bin/python3"));
+        plt.plot().add(times, datarates, "x");
+//        plt.legend().loc("upper right");
+        plt.title("scatter");
+        try {
+            plt.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (PythonExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 

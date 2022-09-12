@@ -1,8 +1,11 @@
 package space;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import spice.basic.*;
 import spice.basic.Body;
 
+import java.awt.image.Kernel;
 import java.util.HashMap;
 
 import static java.lang.Math.abs;
@@ -35,29 +38,51 @@ public class KernelBody extends space.Body {
 //    }
 
     protected void initOperationMap() {
+//        distanceOpTable = HashBasedTable.create();
+//        elevationOpTable = HashBasedTable.create();
+//        occultationObsOpTable = HashBasedTable.create();
+//        occultationTargOpTable = HashBasedTable.create();
+//        occultationOccOpTable = HashBasedTable.create();
+
         distanceOpMap = new HashMap<>();
         elevationOpMap = new HashMap<>();
-        occultationOpMap = new HashMap<>();
         angularSepOpMap = new HashMap<>();
-        distanceOpMap.put(KernelBody.class, (x) -> {
-            return distanceKernel((KernelBody) x);
+        occultationOpMap = new HashMap<>();
+
+//        distanceOpTable.put(KernelBody.class, KernelBody.class, (x,y) -> {
+//            return distanceKernel((KernelBody) x, (KernelBody) y);
+//        });
+//
+//        elevationOpTable.put(KernelBody.class, KernelBody.class, (x,y) -> {
+//           return elevationKernel((KernelBody) x, (KernelBody) y);
+//        });
+
+        distanceOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class), (x,y) -> {
+            return distanceKernel((KernelBody) x, (KernelBody) y);
         });
-        elevationOpMap.put(KernelBody.class, (x) -> {
-            return elevationKernel((KernelBody) x);
+
+        elevationOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class), (x,y) -> {
+           return elevationKernel((KernelBody) x, (KernelBody) y);
         });
-        angularSepOpMap.put(KernelBody.class, (x, y) -> {
-            return angularSepKernel((KernelBody) x, (KernelBody) y);
+
+        angularSepOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class, KernelBody.class), (x, y, z) -> {
+            return angularSepKernel((KernelBody) x, (KernelBody) y, (KernelBody) z);
         });
-        occultationOpMap.put(KernelBody.class, (x,y) -> {
-            return occultationKernel((KernelBody) x, (KernelBody) y);
+
+        occultationOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class, KernelBody.class), (x,y,z) -> {
+            return occultationKernel((KernelBody) x, (KernelBody) y, (KernelBody) z);
         });
+
+//        occultationObsOpTable.put(KernelBody.class, KernelBody.class, (x,y,z) -> {
+//            return occultationKernel((KernelBody) x, (KernelBody) y, (KernelBody) z);
+//        });
 
     }
 
-    protected double distanceKernel(KernelBody other) {
+    protected double distanceKernel(KernelBody thisBody, KernelBody other) {
         try {
             TDBTime time = SpiceTime.getSpiceTime().getTime();
-            StateRecord s = new StateRecord(body, time, other.ref,
+            StateRecord s = new StateRecord(thisBody.body, time, other.ref,
                     new AberrationCorrection("XLT+S"), other.body);
             return s.getPosition().norm();
         } catch (SpiceException e) {
@@ -66,11 +91,11 @@ public class KernelBody extends space.Body {
 
     }
 
-    protected double elevationKernel(KernelBody other) {
+    protected double elevationKernel(KernelBody thisBody, KernelBody other) {
         TDBTime time = SpiceTime.getSpiceTime().getTime();
         StateRecord s = null;
         try {
-            s = new StateRecord(other.body, time, this.ref, new AberrationCorrection("XLT+S"), this.body);
+            s = new StateRecord(other.body, time, thisBody.ref, new AberrationCorrection("XLT+S"), thisBody.body);
             double[] rec = CSPICE.reclat(s.getPosition().toArray());
             double elevation = rec[2] * 180 / 3.14159;
             double R = atmRefraction(elevation);
@@ -81,7 +106,7 @@ public class KernelBody extends space.Body {
         }
     }
 
-    protected boolean occultationKernel(KernelBody other, KernelBody occulting) {
+    protected boolean occultationKernel(KernelBody obs, KernelBody target, KernelBody occulting) {
 //        Checks if other body is occulted wrt this body
         AberrationCorrection
                 abcorr = null;
@@ -93,8 +118,8 @@ public class KernelBody extends space.Body {
             occ = OccultationState.
                     getOccultationState(
                             occulting.body,  "ELLIPSOID", occulting.ref,
-                            other.body,  "POINT", other.ref,
-                            abcorr, this.body, time     );
+                            target.body,  "POINT", target.ref,
+                            abcorr, obs.body, time     );
 
             switch (occ) {
                 case ANNLR2:
@@ -111,7 +136,7 @@ public class KernelBody extends space.Body {
         }
     }
 
-    protected double angularSepKernel(KernelBody body1, KernelBody body2) {
+    protected double angularSepKernel(KernelBody thisBody, KernelBody body1, KernelBody body2) {
 //        Angular separation between two bodies as seen from this one
         AberrationCorrection
                 abcorr = null;
@@ -119,11 +144,11 @@ public class KernelBody extends space.Body {
             abcorr = new AberrationCorrection( "XLT" );
             TDBTime time = SpiceTime.getSpiceTime().getTime();
 
-            StateRecord s = new StateRecord(body1.body, time, ref, abcorr, body);
+            StateRecord s = new StateRecord(body1.body, time, thisBody.ref, abcorr, thisBody.body);
 
             PositionVector v1 = s.getPosition();
 
-            StateRecord s2 = new StateRecord(body2.body, time, ref, abcorr, body);
+            StateRecord s2 = new StateRecord(body2.body, time, thisBody.ref, abcorr, thisBody.body);
             PositionVector v2 = s2.getPosition();
             return v1.sep(v2) * 180/3.14159;
         } catch (SpiceException e) {

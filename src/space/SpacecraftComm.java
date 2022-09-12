@@ -45,4 +45,7 @@ public class SpacecraftComm implements CommunicationStrategy {
     public double get_SNRmin(String band, double freq, Body self, Body other) {
         return params.get("SNRmin", band);
     }
+
+
+    public double get_Bmax(String band, double freq, Body self, Body other) {return Double.POSITIVE_INFINITY;}
 }

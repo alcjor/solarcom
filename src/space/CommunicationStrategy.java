@@ -12,5 +12,7 @@ public interface CommunicationStrategy {
     public double get_Tamw(String band, double freq, Body self, Body other);
     public double get_SNRmin(String band, double freq, Body self, Body other);
 
+    public double get_Bmax(String band, double freq, Body self, Body other);
+
 }
 

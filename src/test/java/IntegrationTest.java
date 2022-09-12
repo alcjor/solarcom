@@ -78,7 +78,7 @@ public class IntegrationTest {
         SpiceTime.getSpiceTime().setTime(new TDBTime("2016-JUL-5 03:53:00 UTC"));
 
 //DATA FROM 2016-JUL-1 TO 2016-AUG-1
-        System.out.println(link.calcDataRate(new TDBTime("2016-JUL-5 03:53:00 UTC")));
+        System.out.println(link.calcDataRate(new TDBTime("2016-JUL-5 03:53:00 UTC"),0,0));
 
 
         Body[] occulting = {
@@ -106,7 +106,7 @@ public class IntegrationTest {
             times.add((double) i);
             if (cp.calcVisibility(5,5)) {
                 System.out.println("HEEEEEEY");
-                dataRates.add(link.calcDataRate(SpiceTime.getSpiceTime().getTime()));
+                dataRates.add(link.calcDataRate(SpiceTime.getSpiceTime().getTime(),0,0));
             } else {
                 dataRates.add(0.0);
             }

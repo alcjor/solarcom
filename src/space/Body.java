@@ -1,5 +1,8 @@
 package space;
 
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Table;
+
 import java.util.HashMap;
 
 public abstract class Body {
@@ -8,10 +11,16 @@ public abstract class Body {
     public HashMap params;
     public boolean onSurface;
 
-    protected HashMap<Class, DistanceHandler> distanceOpMap;
-    protected HashMap<Class, ElevationHanlder> elevationOpMap;
-    protected HashMap<Class, OccultationHanlder> occultationOpMap;
-    protected HashMap<Class, AngularSepHandler> angularSepOpMap;
+    protected HashMap<ClassTuple, DistanceHandler> distanceOpMap;
+    protected HashMap<ClassTuple, ElevationHanlder> elevationOpMap;
+    protected HashMap<ClassTuple, OccultationHanlder> occultationOpMap;
+    protected HashMap<ClassTuple, AngularSepHandler> angularSepOpMap;
+
+//    protected Table<Class, Class, DistanceHandler> distanceOpTable;
+//    protected Table<Class, Class, ElevationHanlder> elevationOpTable;
+//
+//    protected Table<Class, Class, AngularSepHandler> angularSepOpTable;
+
 
     protected abstract void initOperationMap();
 
@@ -26,26 +35,56 @@ public abstract class Body {
     }
 
     public double distance(Body other) {
-        DistanceHandler handler = this.distanceOpMap.get(other.getClass());
-        if (handler == null) {
-            handler = other.distanceOpMap.get(this.getClass());
+        ClassTuple classes = ClassTuple.of(this.getClass(), other.getClass());
+        ClassTuple classesInv = ClassTuple.of(other.getClass(), this.getClass());
+        DistanceHandler handler = this.distanceOpMap.get(classes);
+        if (handler != null) {
+            return handler.distance(this, other);
         }
-        return handler.distance(other);
+        handler = other.distanceOpMap.get(classesInv);
+        return handler.distance(other, this);
     }
 
     public double elevation(Body other) {
-        ElevationHanlder handler = this.elevationOpMap.get(other.getClass());
-        return handler.elevation(other);
+        ClassTuple classes = ClassTuple.of(this.getClass(), other.getClass());
+        ElevationHanlder handler = this.elevationOpMap.get(classes);
+        if (handler == null) {
+            handler = other.elevationOpMap.get(classes);
+        }
+        return handler.elevation(this, other);
     }
 
-    public boolean occultation(Body other, Body occulting) {
-        OccultationHanlder handler = this.occultationOpMap.get(other.getClass());
-        return handler.occultation(other, occulting);
+    public boolean occultation(Body target, Body occulting) {
+
+        Class obsClass = this.getClass();
+        Class targClass = target.getClass();
+        Class occClass = occulting.getClass();
+        ClassTuple classes = ClassTuple.of(obsClass, targClass, occClass);
+        OccultationHanlder handler = this.occultationOpMap.get(classes);
+        if (handler != null) {
+            return handler.occultation(this, target, occulting);
+        }
+        handler = target.occultationOpMap.get(classes);
+        if (handler != null) {
+            return handler.occultation(this, target, occulting);
+        }
+        handler = occulting.occultationOpMap.get(classes);
+        return handler.occultation(this, target, occulting);
+
     }
 
     public double angularSep(Body body1, Body body2) {
-        AngularSepHandler handler = this.angularSepOpMap.get(body1.getClass());
-        return handler.angularSep(body1, body2);
+        ClassTuple classes = ClassTuple.of(this.getClass(), body1.getClass(), body2.getClass());
+        AngularSepHandler handler = this.angularSepOpMap.get(classes);
+        if (handler != null) {
+            return handler.angularSep(this, body1, body2);
+        }
+        handler = body1.angularSepOpMap.get(classes);
+        if (handler != null) {
+            return handler.angularSep(this, body1, body2);
+        }
+        handler = body2.angularSepOpMap.get(classes);
+        return handler.angularSep(this, body1, body2);
     }
 
 
@@ -58,17 +97,19 @@ public abstract class Body {
 }
 
 interface DistanceHandler {
-    double distance(Body other);
+    double distance(Body thisBody, Body other);
 }
 
 interface ElevationHanlder {
-    double elevation(Body other);
+//    double elevation(Body other);
+    double elevation(Body thisBody, Body other);
 }
 
 interface OccultationHanlder {
-    boolean occultation(Body other, Body occulting);
+    boolean occultation(Body obs, Body targ, Body occulting);
 }
 
+
 interface AngularSepHandler {
-    double angularSep(Body body1, Body body2);
+    double angularSep(Body body1, Body body2, Body body3);
 }

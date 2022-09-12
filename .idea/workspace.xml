@@ -9,18 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Implemented body operations">
-      <change afterPath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MetaProgTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MyClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Verified occultations, Gr, and EIRP">
+      <change afterPath="$PROJECT_DIR$/dss45.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mro.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/ClassTuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/MainLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/ContactPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/links/RadioLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/RadioLink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/CommunicationStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/CommunicationStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/DSNComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/DSNComm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/KernelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/IntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/SpacecraftComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/SpacecraftComm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660812062692</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Verified occultations, Gr, and EIRP">
+      <created>1662112150424</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662112150424</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -318,17 +327,7 @@
     <MESSAGE value="Implemented contact plan" />
     <MESSAGE value="Implemented sc params and half of dsn params" />
     <MESSAGE value="Implemented body operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented body operations" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ValidationTest.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Verified occultations, Gr, and EIRP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verified occultations, Gr, and EIRP" />
   </component>
 </project>
