@@ -3,7 +3,7 @@ package space;
 import java.util.Arrays;
 
 public class ClassTuple {
-    static ClassTuple of(Class ... values)
+    public static ClassTuple of(Class ... values)
     {
         return new ClassTuple(values);
     }

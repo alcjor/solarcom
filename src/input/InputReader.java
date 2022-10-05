@@ -13,7 +13,7 @@ import java.util.Map;
 public class InputReader {
 
     String filePath;
-    InputYaml data;
+    public InputYaml data;
 
     public InputReader(String filePath) {
         this.filePath = filePath;

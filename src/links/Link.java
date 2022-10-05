@@ -21,5 +21,5 @@ public abstract class Link {
     public double getWeight() {
         return this.weight;
     }
-    protected void setWeight(double weight) {this.weight = weight;}
+    public void setWeight(double weight) {this.weight = weight;}
 }

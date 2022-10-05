@@ -96,20 +96,4 @@ public abstract class Body {
 //    };
 }
 
-interface DistanceHandler {
-    double distance(Body thisBody, Body other);
-}
 
-interface ElevationHanlder {
-//    double elevation(Body other);
-    double elevation(Body thisBody, Body other);
-}
-
-interface OccultationHanlder {
-    boolean occultation(Body obs, Body targ, Body occulting);
-}
-
-
-interface AngularSepHandler {
-    double angularSep(Body body1, Body body2, Body body3);
-}

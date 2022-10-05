@@ -12,8 +12,8 @@ import static java.lang.Math.abs;
 
 public class KernelBody extends space.Body {
 
-    Body body;
-    ReferenceFrame ref;
+    public Body body;
+    public ReferenceFrame ref;
 
     public KernelBody(String name, String ref, boolean onSurface) throws SpiceException {
         super();

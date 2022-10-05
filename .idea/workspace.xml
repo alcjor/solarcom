@@ -9,19 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Verified occultations, Gr, and EIRP">
-      <change afterPath="$PROJECT_DIR$/dss45.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mro.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/ClassTuple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/MainLoop.java" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Validated code!">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom21_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jgrapht_core1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Preproc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/le_output.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/AngularSepHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/DistanceHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/ElevationHanlder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/OccultationHanlder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testCase.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testCasePreproc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/RadioLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/RadioLink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/InputReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/InputReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/links/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/CommunicationStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/CommunicationStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/DSNComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/DSNComm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ClassTuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ClassTuple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/KernelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/SpacecraftComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/SpacecraftComm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/InputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/InputTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,25 +72,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/jordi/solarcom2/src/id&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jordi/solarcom2&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_directory_selection": "/home/jordi/solarcom2/src/id",
+    "last_opened_file_path": "/home/jordi/solarcom2",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.29898804",
+    "settings.editor.selected.configurable": "MavenSettings"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "yaml"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -92,15 +110,18 @@
       <recent name="test.java" />
       <recent name="id" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="input" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.ValidationTest.test">
+  <component name="RunManager" selected="JUnit.ValidationTest.yamlTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuavaTest.testCSV" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InputTest.jshellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
@@ -109,66 +130,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.GuavaTest" />
-      <option name="METHOD_NAME" value="testCSV" />
+      <option name="MAIN_CLASS_NAME" value="test.java.InputTest" />
+      <option name="METHOD_NAME" value="jshellTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegrationTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.IntegrationTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MetaProgTest.simpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.MetaProgTest" />
-      <option name="METHOD_NAME" value="simpleTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PeopleTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="solarcom2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.PeopleTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidationTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ValidationTest.jshellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
@@ -178,7 +148,58 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
       <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="METHOD_NAME" value="jshellTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidationTest.onlyNodesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
+      <option name="METHOD_NAME" value="onlyNodesTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidationTest.runTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
+      <option name="METHOD_NAME" value="runTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidationTest.yamlTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="solarcom2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
+      <option name="METHOD_NAME" value="yamlTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
@@ -194,19 +215,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ValidationTest.test" />
-      <item itemvalue="JUnit.MetaProgTest.simpleTest" />
-      <item itemvalue="JUnit.IntegrationTest.test" />
-      <item itemvalue="JUnit.PeopleTest.test" />
-      <item itemvalue="JUnit.GuavaTest.testCSV" />
+      <item itemvalue="JUnit.ValidationTest.yamlTest" />
+      <item itemvalue="JUnit.ValidationTest.jshellTest" />
+      <item itemvalue="JUnit.ValidationTest.onlyNodesTest" />
+      <item itemvalue="JUnit.InputTest.jshellTest" />
+      <item itemvalue="JUnit.ValidationTest.runTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ValidationTest.test" />
-        <item itemvalue="JUnit.MetaProgTest.simpleTest" />
-        <item itemvalue="JUnit.IntegrationTest.test" />
-        <item itemvalue="JUnit.PeopleTest.test" />
-        <item itemvalue="JUnit.GuavaTest.testCSV" />
+        <item itemvalue="JUnit.ValidationTest.yamlTest" />
+        <item itemvalue="JUnit.ValidationTest.runTest" />
+        <item itemvalue="JUnit.ValidationTest.jshellTest" />
+        <item itemvalue="JUnit.ValidationTest.onlyNodesTest" />
+        <item itemvalue="JUnit.InputTest.jshellTest" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662112150424</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Validated code!">
+      <created>1663003927767</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663003927767</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -328,6 +356,33 @@
     <MESSAGE value="Implemented sc params and half of dsn params" />
     <MESSAGE value="Implemented body operations" />
     <MESSAGE value="Verified occultations, Gr, and EIRP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verified occultations, Gr, and EIRP" />
+    <MESSAGE value="Validated code!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validated code!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/graph/JGraphTDijkstra.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/input/RunYaml.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/graph/JGraphTDijkstra.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="graph.JGraphTGraph" memberName="graph" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

@@ -17,6 +17,9 @@ public class JGraphTDijkstra implements Dijkstra {
                 new DijkstraShortestPath<>(graph.getGraph());
         GraphPath shortest_path =  dijkstraAlg.findPathBetween(graph.getGraph(), src, target);
 
+        if (shortest_path == null) {
+            return Double.POSITIVE_INFINITY;
+        }
         return shortest_path.getWeight();
     }
 }
