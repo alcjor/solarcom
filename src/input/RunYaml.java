@@ -3,10 +3,14 @@ package input;
 import jdk.jshell.JShell;
 import jdk.jshell.JShellException;
 import jdk.jshell.SnippetEvent;
+import jdk.jshell.VarSnippet;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RunYaml {
 
@@ -44,18 +48,18 @@ public class RunYaml {
     public void readFile() {
         InputStream inputStream;
         try {
-            File tempFile = File.createTempFile("buffer", ".tmp");
-            FileWriter fw = new FileWriter(tempFile);
             Reader fr = new FileReader(filePath);
             BufferedReader br = new BufferedReader(fr);
+            String inData = "";
             while(br.ready()) {
-                fw.write(br.readLine().replaceAll("\"", "\\\\\"") + "\n");
+                String line = br.readLine().replaceAll("\"", "\\\\\"")
+                        .replaceAll("\\{\\{", "\\\\{{");
+                inData = inData + line + "\n";
+
             }
-            fw.close();
             br.close();
             fr.close();
-            tempFile.renameTo(new File("Preproc.yaml"));
-            inputStream = new FileInputStream(new File("Preproc.yaml"));
+            inputStream = new ByteArrayInputStream(inData.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -80,12 +84,39 @@ public class RunYaml {
 
     }
 
-    public void createInstance(String type, Map<String, Object> objectMap) {
+    public void createInstance(String type, Map<String, Object> objectMap, boolean inGroup, List<String> group) {
+
         String instanceCreation;
         String identifier = (String) objectMap.keySet().toArray()[0];
         Map<String, Object> attributeMap = (Map<String, Object>) objectMap.get(identifier);
         String[] attributeNames = attributeMap.keySet().toArray(new String[0]);
         Object[] attributeValues = new Object[attributeNames.length];
+
+        for (String attrName: attributeNames) {
+            String value = "" + attributeMap.get(attrName);
+            if (value.startsWith("\\{{")) {
+                String regex = value.substring(3, value.length()-2);
+                Pattern pattern = Pattern.compile(regex);
+                VarSnippet[] vars = jshell.variables().toArray(VarSnippet[]::new);
+                for (int i = 0; i < vars.length; i++) {
+                    String varName = vars[i].name();
+                    Matcher matcher = pattern.matcher(varName);
+                    if (matcher.find()) {
+                        ((Map<String, Object>) objectMap.get(identifier)).put(attrName, varName);
+                        Object obj = objectMap.remove(identifier);
+                        objectMap.put(identifier + i, obj);
+                        System.out.println("RECURSIVE CALL: " + identifier + i);
+                        createInstance(type, objectMap, inGroup, group);
+                        objectMap.remove(identifier + i);
+                        objectMap.put(identifier, obj);
+                    }
+                }
+                return;
+            }
+        }
+
+        if (inGroup) group.add(identifier);
+
         String attributeString = "";
         for (int i = 0; i < attributeValues.length; i++) {
             attributeValues[i] = attributeMap.get(attributeNames[i]);
@@ -100,10 +131,30 @@ public class RunYaml {
         jshell.eval("System.out.println(" + identifier + ".getClass());");
     }
 
+    public void createGroup(String groupClass, String groupName) {
+        System.out.println("CREATING GROUP: " + groupName);
+        Map<String, Object> groupMap = (Map<String, Object>) data.get(groupName);
+        List<String> groupList = new ArrayList<>();
+        for (String type: groupMap.keySet()) {
+            List<Object> objects = (List<Object>) groupMap.get(type);
+            for (Object obj: objects) {
+                createInstance(type, (Map<String, Object>) obj, true, groupList);
+                System.out.println("Instance: " + groupList.get(groupList.size()-1));
+//                VarSnippet[] vars = jshell.variables().toArray(VarSnippet[]::new);
+
+//                safeEval(groupList.get(groupList.size()-1) + ".getClass();");
+            }
+        }
+        String groupString = String.join(",", groupList);
+        safeEval(groupClass + "[] " + groupName + " = {" + groupString + "};");
+
+    }
+
+
     public void createInstances(String type, Map<String, Object> data) {
         List<Object> objects = (List<Object>) data.get(type);
         for (Object obj: objects) {
-            createInstance(type, (Map<String, Object>) obj);
+            createInstance(type, (Map<String, Object>) obj, false, null);
         }
     }
 
@@ -156,32 +207,34 @@ public class RunYaml {
         safeEval("System.out.println(occulting[0].getName());");
 
 //      Nodes
-        Map<String, Object> nodeMap = (Map<String, Object>) data.get("nodes");
-        String nodes = "";
-        for (String type: nodeMap.keySet()) {
-            List<Object> objects = (List<Object>) nodeMap.get(type);
-            for (Object obj: objects) {
-                createInstance(type, (Map<String, Object>) obj);
-                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
-                nodes = nodes.concat(identifier + ",");
-            }
-        }
-        safeEval("Node[] nodes = {" + nodes + "};");
-        safeEval("System.out.println(nodes);");
-        System.out.println("THE NODES: " + nodes);
+        createGroup("Node", "nodes");
+//        Map<String, Object> nodeMap = (Map<String, Object>) data.get("nodes");
+//        String nodes = "";
+//        for (String type: nodeMap.keySet()) {
+//            List<Object> objects = (List<Object>) nodeMap.get(type);
+//            for (Object obj: objects) {
+//                createInstance(type, (Map<String, Object>) obj);
+//                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
+//                nodes = nodes.concat(identifier + ",");
+//            }
+//        }
+//        safeEval("Node[] nodes = {" + nodes + "};");
+//        safeEval("System.out.println(nodes);");
+//        System.out.println("THE NODES: " + nodes);
 
 //      Links
-        Map<String, Object> linkMap = (Map<String, Object>) data.get("links");
-        String links = "";
-        for (String type: linkMap.keySet()) {
-            List<Object> objects = (List<Object>) linkMap.get(type);
-            for (Object obj: objects) {
-                createInstance(type, (Map<String, Object>) obj);
-                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
-                links = links.concat(identifier + ",");
-            }
-        }
-        safeEval("Link[] links = {" + links + "};");
+        createGroup("Link", "links");
+//        Map<String, Object> linkMap = (Map<String, Object>) data.get("links");
+//        String links = "";
+//        for (String type: linkMap.keySet()) {
+//            List<Object> objects = (List<Object>) linkMap.get(type);
+//            for (Object obj: objects) {
+//                createInstance(type, (Map<String, Object>) obj);
+//                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
+//                links = links.concat(identifier + ",");
+//            }
+//        }
+//        safeEval("Link[] links = {" + links + "};");
 
 //       Run the code
         safeEval("String[] kernelUrls = {" + kernelUrls + "};");

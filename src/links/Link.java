@@ -9,6 +9,12 @@ public abstract class Link {
     private double weight;
 
     protected Link(Node src, Node dest) {
+        if (src == null) {
+            throw new RuntimeException("SRC node is null");
+        }
+        if (dest == null) {
+            throw new RuntimeException("DEST node is null");
+        }
         this.src = src;
         this.dest = dest;
     }
