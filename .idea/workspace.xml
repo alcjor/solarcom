@@ -9,32 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Validated code!">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom21_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jgrapht_core1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Preproc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/le_output.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/AngularSepHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/DistanceHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/ElevationHanlder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/OccultationHanlder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCase.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCasePreproc.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Final version for TFM!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/lib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input/InputReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/InputReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ClassTuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ClassTuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/KernelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/InputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/InputTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/RunYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/RunCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +62,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "11",
     "last_directory_selection": "/home/jordi/solarcom2/src/id",
-    "last_opened_file_path": "/home/jordi/solarcom2",
+    "last_opened_file_path": "/home/jordi/demo_TFM/newCode/LatLonBody.java",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.29898804",
@@ -114,14 +92,14 @@
       <recent name="input" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ValidationTest.yamlTest">
+  <component name="RunManager" selected="JUnit.ValidationTest.runTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InputTest.jshellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ValidationTest.externalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="solarcom2" />
       <extension name="coverage">
         <pattern>
@@ -130,8 +108,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.InputTest" />
-      <option name="METHOD_NAME" value="jshellTest" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ValidationTest" />
+      <option name="METHOD_NAME" value="externalTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea -Djava.library.path=$PROJECT_DIR$/../SPICE/JNISpice/lib" />
       <method v="2">
@@ -215,19 +193,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ValidationTest.externalTest" />
       <item itemvalue="JUnit.ValidationTest.yamlTest" />
       <item itemvalue="JUnit.ValidationTest.jshellTest" />
       <item itemvalue="JUnit.ValidationTest.onlyNodesTest" />
-      <item itemvalue="JUnit.InputTest.jshellTest" />
       <item itemvalue="JUnit.ValidationTest.runTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ValidationTest.yamlTest" />
         <item itemvalue="JUnit.ValidationTest.runTest" />
+        <item itemvalue="JUnit.ValidationTest.externalTest" />
+        <item itemvalue="JUnit.ValidationTest.yamlTest" />
         <item itemvalue="JUnit.ValidationTest.jshellTest" />
         <item itemvalue="JUnit.ValidationTest.onlyNodesTest" />
-        <item itemvalue="JUnit.InputTest.jshellTest" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663003927767</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Final version for TFM!">
+      <created>1664984957722</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1664984957722</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -357,7 +342,8 @@
     <MESSAGE value="Implemented body operations" />
     <MESSAGE value="Verified occultations, Gr, and EIRP" />
     <MESSAGE value="Validated code!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Validated code!" />
+    <MESSAGE value="Final version for TFM!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final version for TFM!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -366,11 +352,6 @@
           <url>file://$PROJECT_DIR$/src/graph/JGraphTDijkstra.java</url>
           <line>22</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/input/RunYaml.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/graph/JGraphTDijkstra.java</url>

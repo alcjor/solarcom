@@ -20,6 +20,7 @@ import spice.basic.TDBTime;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RunCase {
@@ -44,7 +45,9 @@ public class RunCase {
     private String pythonPath = "/usr/bin/python3";
 
 
-    public RunCase() {}
+    public RunCase() {
+        System.out.println("CREATED!!");
+    }
 
 //    NOTE: all RadioLinks at the beginning!!!
     public void setLinks(Link[] links, Body[] occulting) {
@@ -74,6 +77,11 @@ public class RunCase {
 
     public void setNodes(Node[] nodes) {
         this.nodes = nodes.clone();
+        System.out.println("NODES (" + nodes.length + "):");
+        for (Node n: nodes) {
+            System.out.println(n.getName());
+        }
+        System.out.println("NODES SET!!");
     }
 
     public void setTransmitter(Node node) {
@@ -92,6 +100,7 @@ public class RunCase {
         } catch (SpiceErrorException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("TIME SET!!");
     }
 
 
@@ -100,6 +109,12 @@ public class RunCase {
 
         times.clear();
         dataRates.clear();
+
+
+        System.out.println("LINKS:");
+        for (Link l: links) {
+            System.out.println(l.getSrc().getName() + " -> " + l.getDest().getName());
+        }
 
 
         JGraphTGraph graph = new JGraphTGraph(List.of(nodes), List.of(links));
@@ -158,9 +173,26 @@ public class RunCase {
         }
     }
     public void plotResults() {
+
+        List<Double> hours = new ArrayList<>();
+        double t0 = times.get(0);
+        times.stream().forEach(t -> hours.add((t-t0)/3600));
+
+        List<Double> mbps = new ArrayList<>();
+        dataRates.stream().forEach(x -> mbps.add(x/1e6));
+
         Plot plt = Plot.create(PythonConfig.pythonBinPathConfig(pythonPath));
-        plt.plot().add(times, dataRates, "x");
-        plt.title("Datarate");
+        plt.plot().add(hours, mbps, "x");
+        List<Double> non0mbps = new ArrayList<>();
+        mbps.stream().filter(x -> x > 0).forEach(x -> non0mbps.add(x));
+        double ymin = Collections.min(non0mbps);
+        double ymax = Collections.max(mbps);
+
+        plt.ylim(ymin*0.9,ymax*1.1);
+//        plt.plot().
+        plt.ylabel("Data rate [Mbps]");
+        plt.xlabel("Hours since simulation start");
+//        plt.title("Datarate");
         try {
             plt.show();
         } catch (IOException e) {

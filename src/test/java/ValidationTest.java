@@ -98,6 +98,17 @@ public class ValidationTest {
     };
 
     @Test
+    public void externalTest() throws JShellException {
+        String cp = System.getProperty("java.class.path");
+        cp = "/home/jordi/demo_TFM/external:" + cp;
+        System.out.println(cp);
+        JShell jshell = JShell.builder().build();
+        jshell.addToClasspath(cp);
+        jshell.eval("System.out.println(\"Hi class\");");
+        jshell.eval("System.out.println(newCode.RandomClass.class);");
+    }
+
+    @Test
     public void yamlTest() throws JShellException  {
         RunYaml runYaml = new RunYaml("network.yaml");
         runYaml.readFile();

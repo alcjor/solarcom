@@ -13,6 +13,7 @@ public class RunYaml {
     String filePath;
     public Map<String,Object> data;
     public JShell jshell;
+
     private String[] imports = {
             "import com.github.sh0nk.matplotlib4j.Plot;",
             "import com.github.sh0nk.matplotlib4j.PythonConfig;",
@@ -64,13 +65,19 @@ public class RunYaml {
 
     public void initJShell() {
         String cp = System.getProperty("java.class.path");
+        if (data.containsKey("classPath")) {
+            String classpath = ((String) data.get("classPath"));
+            cp = cp + ":" + classpath.substring(2, classpath.length()-2);
+        }
+        System.out.println(cp);
         String spice_path = (String) data.get("spicePath");
         spice_path = spice_path.substring(2, spice_path.length()-2);
         jshell = JShell.builder().remoteVMOptions("-Djava.library.path=" + spice_path).build();
         jshell.addToClasspath(cp);
         for (String imp: imports) {
-            jshell.eval(imp);
+            safeEval(imp);
         }
+
     }
 
     public void createInstance(String type, Map<String, Object> objectMap) {
@@ -88,7 +95,9 @@ public class RunYaml {
         attributeString = attributeString.replaceAll("\\\\", "");
         instanceCreation = type + " " + identifier +
                 " = new " + type + "(" + attributeString + ");";
-        jshell.eval(instanceCreation);
+        safeEval(instanceCreation);
+        System.out.println(instanceCreation);
+        jshell.eval("System.out.println(" + identifier + ".getClass());");
     }
 
     public void createInstances(String type, Map<String, Object> data) {
@@ -98,11 +107,22 @@ public class RunYaml {
         }
     }
 
+    private void safeEval(String expr) {
+        List<SnippetEvent> res = jshell.eval(expr);
+        if (res.get(0).exception() != null) {
+            try {
+                throw res.get(0).exception();
+            } catch (JShellException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public void run() throws JShellException {
         Set<String> keywords = Set.of("spicePath", "kernelPath", "kernelUrls",
                                 "nodes", "links", "startTime", "endTime",
                                 "step", "transmitter", "receiver", "occulting",
-                                "outputFile");
+                                "outputFile", "classPath");
 
         String kernelPath = (String) data.get("kernelPath");
         kernelPath = kernelPath.replaceAll("\\\\", "");
@@ -131,7 +151,9 @@ public class RunYaml {
         ArrayList<String> occultingList = (ArrayList<String>) data.get("occulting");
         String occulting = occultingList.toString();
         occulting = occulting.substring(1, occulting.length()-1);
-        jshell.eval("Body[] occulting = {" + occulting + "};");
+        safeEval("Body[] occulting = {" + occulting + "};");
+        System.out.println("FIRST OCCULTING BODY:");
+        safeEval("System.out.println(occulting[0].getName());");
 
 //      Nodes
         Map<String, Object> nodeMap = (Map<String, Object>) data.get("nodes");
@@ -144,7 +166,9 @@ public class RunYaml {
                 nodes = nodes.concat(identifier + ",");
             }
         }
-        jshell.eval("Node[] nodes = {" + nodes + "};");
+        safeEval("Node[] nodes = {" + nodes + "};");
+        safeEval("System.out.println(nodes);");
+        System.out.println("THE NODES: " + nodes);
 
 //      Links
         Map<String, Object> linkMap = (Map<String, Object>) data.get("links");
@@ -157,20 +181,20 @@ public class RunYaml {
                 links = links.concat(identifier + ",");
             }
         }
-        jshell.eval("Link[] links = {" + links + "};");
+        safeEval("Link[] links = {" + links + "};");
 
 //       Run the code
-        jshell.eval("String[] kernelUrls = {" + kernelUrls + "};");
-        jshell.eval("RunCase run = new RunCase();");
-        jshell.eval("run.loadKernels("+kernelPath+",kernelUrls);");
-        jshell.eval("run.setTime(" + startTime + "," + endTime + "," + step + ");");
-        jshell.eval("run.setNodes(nodes);");
-        jshell.eval("run.setLinks(links, occulting);");
-        jshell.eval("run.setTransmitter(" + transmitter + ");");
-        jshell.eval("run.setReceiver(" + receiver + ");");
-        jshell.eval("run.run();");
-        jshell.eval("run.saveResults(" + outputFile + ");");
-        jshell.eval("run.plotResults();");
+        safeEval("String[] kernelUrls = {" + kernelUrls + "};");
+        safeEval("RunCase run = new RunCase();");
+        safeEval("run.loadKernels("+kernelPath+",kernelUrls);");
+        safeEval("run.setTime(" + startTime + "," + endTime + "," + step + ");");
+        safeEval("run.setNodes(nodes);");
+        safeEval("run.setLinks(links, occulting);");
+        safeEval("run.setTransmitter(" + transmitter + ");");
+        safeEval("run.setReceiver(" + receiver + ");");
+        safeEval("run.run();");
+        safeEval("run.saveResults(" + outputFile + ");");
+        safeEval("run.plotResults();");
     }
 
 
