@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Final version for TFM!">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input/RunYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/RunCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added demo TFM">
+      <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +306,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664984957722</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added demo TFM">
+      <created>1666450666471</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666450666471</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added demo TFM">
+      <created>1666450716781</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666450716781</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -343,7 +354,8 @@
     <MESSAGE value="Verified occultations, Gr, and EIRP" />
     <MESSAGE value="Validated code!" />
     <MESSAGE value="Final version for TFM!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final version for TFM!" />
+    <MESSAGE value="Added demo TFM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added demo TFM" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
