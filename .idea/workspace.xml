@@ -9,14 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added demo TFM">
-      <change afterPath="$PROJECT_DIR$/demo_TFM/runAsterix/Preproc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/runAsterix/solarcom2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/simpleRun/Preproc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/simpleRun/dsn_network.csv" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Final version for TFM!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input/RunYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/RunCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,30 +50,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "11",
-    "last_directory_selection": "/home/jordi/solarcom2/src/id",
-    "last_opened_file_path": "/home/jordi/projects/solarcom",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.29898804",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/jordi/solarcom2/src/id&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jordi/demo_TFM/newCode/LatLonBody.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29898804&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "yaml"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;yaml&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -312,21 +309,7 @@
       <option name="project" value="LOCAL" />
       <updated>1664984957722</updated>
     </task>
-    <task id="LOCAL-00014" summary="Added demo TFM">
-      <created>1666450666471</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1666450666471</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added demo TFM">
-      <created>1666450716781</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1666450716781</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -360,8 +343,7 @@
     <MESSAGE value="Verified occultations, Gr, and EIRP" />
     <MESSAGE value="Validated code!" />
     <MESSAGE value="Final version for TFM!" />
-    <MESSAGE value="Added demo TFM" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added demo TFM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final version for TFM!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
