@@ -9,14 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added demo TFM">
-      <change afterPath="$PROJECT_DIR$/demo_TFM/runAsterix/Preproc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/runAsterix/solarcom2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/simpleRun/Preproc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_TFM/simpleRun/dsn_network.csv" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Resolved workspace conflict">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/solarcom21_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom2_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_2_22,_9_24_AM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input/RunYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/links/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/Link.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/newCode/LatLonBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/newCode/dss45.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/newCode/esa_network.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/newCode/mro.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/newCode/solarcom2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/plots/makePlot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/runAsterix/Preproc.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/runAsterix/dsn_network.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/runAsterix/dsn_network.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/runAsterix/dss45.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/runAsterix/mro.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/Preproc.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/dsn_network.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/dsn_network.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/dss45.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/mro.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_TFM/simpleRun/solarcom2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/JNISpice/src/JNISpice/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/lib/JNISpice/src/JNISpice/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666450716781</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Resolved workspace conflict">
+      <created>1667377572214</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667377572214</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -361,7 +384,8 @@
     <MESSAGE value="Validated code!" />
     <MESSAGE value="Final version for TFM!" />
     <MESSAGE value="Added demo TFM" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added demo TFM" />
+    <MESSAGE value="Resolved workspace conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved workspace conflict" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

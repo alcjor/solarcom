@@ -2,8 +2,6 @@
   <artifact type="jar" name="solarcom2:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/solarcom2_jar</output-path>
     <root id="archive" name="solarcom2.jar">
-      <element id="module-output" name="lib" />
-      <element id="module-output" name="solarcom2" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgrapht-core-1.5.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jheaps-0.13.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-31.1-jre.jar" path-in-jar="/" />
@@ -36,7 +34,8 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-platform-engine-1.8.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-jupiter-api-5.8.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-jupiter-params-5.8.1.jar" path-in-jar="/" />
-      <element id="dir-copy" path="$PROJECT_DIR$/src" />
+      <element id="module-output" name="solarcom2" />
+      <element id="module-output" name="lib" />
     </root>
   </artifact>
 </component>
