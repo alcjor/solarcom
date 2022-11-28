@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Removed conflicting folder">
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added readme file">
       <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/jline-3.21.0.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/progressbar-0.9.5.jar" afterDir="false" />
@@ -346,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668085193917</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added readme file">
+      <created>1669630513132</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1669630513132</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -383,7 +390,8 @@
     <MESSAGE value="Added demo TFM" />
     <MESSAGE value="Resolved workspace conflict" />
     <MESSAGE value="Removed conflicting folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed conflicting folder" />
+    <MESSAGE value="Added readme file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added readme file" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
