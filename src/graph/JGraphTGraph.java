@@ -65,12 +65,12 @@ public class JGraphTGraph implements Graph{
         this.graph.removeEdge(link.getSrc(), link.getDest());
     }
 
-    public Node[] getNodes() {
-        return (Node[]) this.nodes.toArray();
+    public List<Node> getNodes() {
+        return this.nodes;
     }
 
-    public Link[] getLinks() {
-        return (Link[]) this.links.toArray();
+    public List<Link> getLinks() {
+        return this.links;
     }
 
     public org.jgrapht.Graph getGraph() {

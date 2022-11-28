@@ -14,6 +14,12 @@ import spice.basic.SpiceException;
 public class InputTest {
 
     @Test
+    public void envVarTest() {
+        String user = System.getProperty("SOLARCOM");
+        System.out.println("Environment variable is: "  + user);
+    }
+
+    @Test
     public void yamlTest() {
         InputReader ir = new InputReader("./provaInput.yaml");
         ir.readFile();

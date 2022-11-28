@@ -4,10 +4,15 @@ import jdk.jshell.JShell;
 import jdk.jshell.JShellException;
 import jdk.jshell.SnippetEvent;
 import jdk.jshell.VarSnippet;
+import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +20,9 @@ import java.util.regex.Pattern;
 public class RunYaml {
 
     String filePath;
+    String kernelPath;
+    String spicePath;
+    String classPath;
     public Map<String,Object> data;
     public JShell jshell;
 
@@ -43,6 +51,15 @@ public class RunYaml {
 
     public RunYaml(String filePath) {
         this.filePath = filePath;
+        try {
+            Path path = Paths.get(src.Main.class.getProtectionDomain().getCodeSource().getLocation()
+                    .toURI());
+            Path parent = path.getParent();
+            Path config_file = parent.resolve("config.yaml");
+            loadConfig(config_file.toString());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void readFile() {
@@ -67,16 +84,33 @@ public class RunYaml {
         data = yaml.load(inputStream);
     }
 
+    private void loadConfig(String config_path) {
+        InputStream inputStream;
+        try {
+            inputStream = new FileInputStream(new File(config_path));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Yaml yaml = new Yaml();
+        Map<String, Object> config = yaml.load(inputStream);
+        spicePath = (String) config.get("spicePath");
+        kernelPath = (String) config.get("kernelPath");
+        kernelPath = "\"" + kernelPath + "\"";
+        classPath = (String) config.get("classPath");
+//        classPath = "\"" + classPath + "\"";
+    }
+
     public void initJShell() {
         String cp = System.getProperty("java.class.path");
-        if (data.containsKey("classPath")) {
-            String classpath = ((String) data.get("classPath"));
-            cp = cp + ":" + classpath.substring(2, classpath.length()-2);
-        }
+//        if (data.containsKey("classPath")) {
+//            String classpath = ((String) data.get("classPath"));
+//            cp = cp + ":" + classpath.substring(2, classpath.length()-2);
+//        }
+        cp = cp + ":" + classPath;
         System.out.println(cp);
-        String spice_path = (String) data.get("spicePath");
-        spice_path = spice_path.substring(2, spice_path.length()-2);
-        jshell = JShell.builder().remoteVMOptions("-Djava.library.path=" + spice_path).build();
+//        String spice_path = (String) data.get("spicePath");
+//        spice_path = spice_path.substring(2, spice_path.length()-2);
+        jshell = JShell.builder().remoteVMOptions("-Djava.library.path=" + spicePath).build();
         jshell.addToClasspath(cp);
         for (String imp: imports) {
             safeEval(imp);
@@ -175,8 +209,8 @@ public class RunYaml {
                                 "step", "transmitter", "receiver", "occulting",
                                 "outputFile", "classPath");
 
-        String kernelPath = (String) data.get("kernelPath");
-        kernelPath = kernelPath.replaceAll("\\\\", "");
+//        String kernelPath = (String) data.get("kernelPath");
+//        kernelPath = kernelPath.replaceAll("\\\\", "");
         String outputFile = (String) data.get("outputFile");
         outputFile = outputFile.replaceAll("\\\\", "");
         ArrayList<String> kernelList = (ArrayList<String>) data.get("kernelUrls");

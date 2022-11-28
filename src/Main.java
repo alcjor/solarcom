@@ -15,7 +15,10 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -24,6 +27,7 @@ import links.Link;
 
 public class Main {
     public static void main(String[] args) throws JShellException {
+
         RunYaml runYaml = new RunYaml(args[0]);
         runYaml.readFile();
         runYaml.initJShell();

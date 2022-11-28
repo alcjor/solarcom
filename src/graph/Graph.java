@@ -2,6 +2,9 @@ package graph;
 
 import links.Link;
 import nodes.Node;
+
+import java.util.List;
+
 public interface Graph {
 
     public void updateWeights();
@@ -11,8 +14,8 @@ public interface Graph {
     public void addLink(Link link);
     public void removeLink(Link link);
 
-    public Node[] getNodes();
-    public Link[] getLinks();
+    public List<Node> getNodes();
+    public List<Link> getLinks();
 
 
 }

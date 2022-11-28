@@ -35,6 +35,10 @@ public class RunCase {
 
     private List<Double> times = new ArrayList<>();
     List<Double> dataRates = new ArrayList<>();
+    List<Double> widestDataRates = new ArrayList<>();
+
+    List<String> shortestPath = new ArrayList<>();
+    List<String> widestPath = new ArrayList<>();
     private Node transmitter;
     private Node receiver;
 
@@ -109,6 +113,9 @@ public class RunCase {
 
         times.clear();
         dataRates.clear();
+        widestDataRates.clear();
+        shortestPath.clear();
+        widestPath.clear();
 
 
         System.out.println("LINKS:");
@@ -118,16 +125,29 @@ public class RunCase {
 
 
         JGraphTGraph graph = new JGraphTGraph(List.of(nodes), List.of(links));
+        saveNodes(graph);
+        saveEntriesLinks();
 
         SpiceTime.getSpiceTime().setTime(start_time);
-        while (true) {
+        double totalTime = 0;
+        int numSteps = 0;
+        try {
+            totalTime = end_time.sub(start_time).getMeasure();
+            numSteps = (int) Math.floor(totalTime / step.getMeasure());
+        } catch (SpiceException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (int stepNum = 0; stepNum < numSteps; ++stepNum) {
             try {
                 if (!(end_time.getTDBSeconds() >= SpiceTime.getSpiceTime().getTime().getTDBSeconds())) break;
+                if (stepNum % 1 == 0) System.out.println("Step: " + stepNum + " of " + numSteps);
+
                 TDBTime time = SpiceTime.getSpiceTime().getTime();
                 for (int i = 0; i < contactPlans.length; i++) {
 
                     double dr = 0;
-                    if (contactPlans[i].calcVisibility(angle_solar_interf,angle_occlgs)) {
+                    if (contactPlans[i].calcVisibility(angle_solar_interf, angle_occlgs)) {
                         dr = ((RadioLink) links[i]).calcDataRate(time, Tk, D);
                     }
                     links[i].setWeight(1/dr);
@@ -135,25 +155,132 @@ public class RunCase {
 //                RUN DIJKSTRA
                 graph.updateWeights();
                 JGraphTDijkstra dijkstra = new JGraphTDijkstra(graph);
-                double sd = dijkstra.calcShortestDistance(transmitter, receiver);
+                JGraphTDijkstra.ShortestPath sp = dijkstra.getShortestPath(transmitter, receiver);
+                double sd = sp.distance;
+//                if (sp.length != 2 && sp.length != 0) {
+//                    System.out.println("WARNING: Shortest path length is not 2");
+//                }
+
+
+//                sd = dijkstra.calcShortestDistance(transmitter, receiver);
+                saveInstantLinks(graph, sp.sources, sp.destinations, start_time);
+                String ssp;
+                ssp = "";
+                if (sp.length > 0) {
+                    for (Node n: sp.sources) {
+                        ssp += n.getName() + "/";
+                    }
+                    ssp += sp.destinations.get(sp.destinations.size()-1).getName();
+                }
+                shortestPath.add(ssp);
 
 //                Save times and dr, and move to the next step
                 times.add(time.getTDBSeconds());
                 dataRates.add(1/sd);
+                for (Link l: graph.getLinks()) {
+                    l.setWeight(1/l.getWeight());
+                }
+                graph.updateWeights();
+                sp = dijkstra.getWidestPath(transmitter, receiver);
+                widestDataRates.add(sp.distance);
+                ssp = "";
+                if (sp.length > 0) {
+                    ssp += sp.sources.get(sp.sources.size()-1).getName();
+                    for (int i = sp.destinations.size()-1; i >= 0; --i) {
+                        ssp = ssp + "/" + sp.destinations.get(i).getName();
+                    }
+//                    for (Node n: sp.sources) {
+//                        ssp += n.getName() + "/";
+//                    }
+                }
+                widestPath.add(ssp);
+
                 SpiceTime.getSpiceTime().setTime(time.add(step));
 
             } catch (SpiceException e) {
                 throw new RuntimeException(e);
             }
         }
+
+
     }
 
     public List<Double> getDataRates() {
         return dataRates;
     }
 
+    public List<Double> getWidestDataRates() {
+        return widestDataRates;
+    }
+
     public List<Double> getTimes() {
         return times;
+    }
+
+    public void saveInstantLinks(Graph g, List<Node> sp_sources, List<Node> sp_dest, TDBTime start_time) {
+        try {
+            CSVWriter linksWriter = new CSVWriter(new FileWriter("links.csv", true));
+//            String[] linksEntries = {"time_start", "time_end", "Source", "Target"};
+//            linksWriter.writeNext(linksEntries);
+            List<Link> links = g.getLinks();
+            int sp_count = 0;
+            for (Link l : links) {
+                if (l.getWeight() < Double.POSITIVE_INFINITY) {
+                    TDBTime time = SpiceTime.getSpiceTime().getTime();
+//                    int seconds = (int) (time.getTDBSeconds() - start_time.getTDBSeconds());
+//                    int seconds_end = (int) (seconds+step.getMeasure());
+                    boolean in_sp = false;
+                    for (int i = 0; i < sp_sources.size(); i++) {
+                        if (sp_sources.get(i) == l.getSrc() && sp_dest.get(i) == l.getDest()) {
+                            in_sp = true;
+                            sp_count++;
+                            break;
+                        }
+                    }
+
+                    linksWriter.writeNext(new String[]{time.toUTCString("ISOC", 9),
+                            String.valueOf(l.getSrc().getId()), String.valueOf(l.getDest().getId()),
+                            String.valueOf(1/ l.getWeight()), String.valueOf(in_sp)});
+                }
+            }
+            linksWriter.close();
+//            if (sp_count != 0 && sp_count != 2) {
+//                System.out.println("WARNING! Incorrect shortest path lenght: " + sp_count);
+//            }
+        } catch (IOException e) {
+//        } catch (IOException | SpiceException e) {
+            throw new RuntimeException(e);
+        } catch (SpiceErrorException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void saveEntriesLinks() {
+        CSVWriter linksWriter = null;
+        try {
+            linksWriter = new CSVWriter(new FileWriter("links.csv"));
+            String[] linksEntries = {"Timeset", "Source", "Target", "DataRate", "InShortestPath"};
+            linksWriter.writeNext(linksEntries);
+            linksWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void saveNodes(Graph g) {
+        try {
+            CSVWriter nodesWriter = new CSVWriter(new FileWriter("nodes.csv"));
+            String[] nodesEntries = {"id", "label", "type"};
+            nodesWriter.writeNext(nodesEntries);
+            List<Node> nodes = g.getNodes();
+            for (Node n: nodes) {
+                nodesWriter.writeNext(new String[]{String.valueOf(n.getId()), n.getName(), String.valueOf(n.getClass())});
+            }
+            nodesWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void saveResults(String csvFile) {
@@ -163,8 +290,11 @@ public class RunCase {
             writer = new CSVWriter(new FileWriter(csvFile), CSVWriter.DEFAULT_SEPARATOR,
                     CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                     CSVWriter.DEFAULT_LINE_END);
+            data.add(new String[]{"Time", "Shortest Path Distance", "Widest Path Distance",
+                    "Shortest Path", "Widest Path"});
             for (int i = 0; i < dataRates.size(); i++) {
-                data.add(new String[]{times.get(i).toString(), dataRates.get(i).toString()});
+                data.add(new String[]{times.get(i).toString(), dataRates.get(i).toString(),
+                        widestDataRates.get(i).toString(), shortestPath.get(i), widestPath.get(i)});
             }
             writer.writeAll(data);
             writer.close();
