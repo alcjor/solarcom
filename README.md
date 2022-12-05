@@ -1,6 +1,7 @@
 # SOLARCOM
 *An Object-Oriented Code for the Simulation of Deep Space Communication Networks*
 
+Authors: Paula Betriu, Jordi Alcón, Manel Soria, Jordi Gutiérrez, Sergi Berdor, and Carles Farré
 ---
 
 ## Installation
