@@ -1,6 +1,7 @@
 # SOLARCOM
 *An Object-Oriented Code for the Simulation of Deep Space Communication Networks*
 
+Authors: Paula Betriu, Jordi Alcón, Manel Soria, Jordi Gutiérrez, Sergi Berdor, and Carles Farré
 ---
 
 ## Installation
@@ -24,7 +25,7 @@ Once you've created the config file, Solarcom will be ready for execution.
 
 ## Running a Simulation
 
-Download the examples' folder from the repository. Open one of the examples. There, you'll find a single
+Open one of the examples. There, you'll find a single
 Yaml file. This is the *Simulation File*, which defines the network and contains the data necessary for
 Solarcom to perform a simulation. To run the simulation, execute the following command:
 
