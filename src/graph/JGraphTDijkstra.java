@@ -1,6 +1,7 @@
 package graph;
 
 import links.Link;
+import links.RadioLink;
 import nodes.Node;
 import org.apache.commons.collections.map.HashedMap;
 import org.jgrapht.GraphPath;
@@ -48,8 +49,15 @@ public class JGraphTDijkstra implements Dijkstra {
         ShortestPath result = new ShortestPath(new ArrayList<>(), new ArrayList<>(), Double.POSITIVE_INFINITY, 0);
         DijkstraShortestPath dijkstraAlg =
                 new DijkstraShortestPath<>(graph.getGraph());
+
+
         GraphPath shortest_path =  dijkstraAlg.findPathBetween(graph.getGraph(), src, target);
 
+        for (Link l: graph.getLinks()) {
+//                if (l.getClass() == RadioLink.class) {
+                System.out.print(" " + 1/l.getWeight());
+//                }
+        }
         if (shortest_path != null) {
             List edges = shortest_path.getEdgeList();
             result.length = shortest_path.getLength();
@@ -58,6 +66,9 @@ public class JGraphTDijkstra implements Dijkstra {
                 result.sources.add((Node) graph.getGraph().getEdgeSource(e));
                 result.destinations.add((Node) graph.getGraph().getEdgeTarget(e));
             }
+        } else {
+            System.out.print(" NULL ");
+
         }
         return result;
     }

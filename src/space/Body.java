@@ -45,13 +45,13 @@ public abstract class Body {
         return handler.distance(other, this);
     }
 
-    public double elevation(Body other) {
+    public double elevation(Body other, boolean refraction) {
         ClassTuple classes = ClassTuple.of(this.getClass(), other.getClass());
         ElevationHanlder handler = this.elevationOpMap.get(classes);
         if (handler == null) {
             handler = other.elevationOpMap.get(classes);
         }
-        return handler.elevation(this, other);
+        return handler.elevation(this, other, refraction);
     }
 
     public boolean occultation(Body target, Body occulting) {

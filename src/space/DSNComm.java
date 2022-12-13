@@ -45,7 +45,7 @@ public class DSNComm implements CommunicationStrategy {
 //        double elevation = 10;
         double CD = 0.9;
         double a;
-        double elevation = self.elevation(other);
+        double elevation = self.elevation(other, false);
         try {
             CD = this.params.get("CD", band);
             a = calcAtmosphericAttenuation(band, CD, elevation);
@@ -68,7 +68,7 @@ public class DSNComm implements CommunicationStrategy {
 //        double elevation = 0;
         double CD;
         double a;
-        double elevation = self.elevation(other);
+        double elevation = self.elevation(other, false);
 
         try {
             CD = this.params.get("CD", band);
@@ -101,7 +101,7 @@ public class DSNComm implements CommunicationStrategy {
     public double get_Tamw(String band, double freq, Body self, Body other) {
         double CD = 0.9;
         double A;
-        double elevation = self.elevation(other);
+        double elevation = self.elevation(other, false);
         try {
             CD = this.params.get("CD", band);
             A = calcAtmosphericAttenuation(band, CD, elevation);

@@ -3,8 +3,8 @@ package links;
 import nodes.BodyNode;
 import space.CommunicationStrategy;
 import space.KernelBody;
-import spice.basic.SpiceException;
-import spice.basic.TDBTime;
+import space.SpiceTime;
+import spice.basic.*;
 
 public class RadioLink extends Link {
 
@@ -23,7 +23,20 @@ public class RadioLink extends Link {
     }
 
     private double calcSpaceLoss(TDBTime time) throws SpiceException {
-        double r = src.getBody().distance(dest.getBody());
+        KernelBody sb = (KernelBody) src.getBody();
+        KernelBody db = (KernelBody) dest.getBody();
+        double r;
+        if (!sb.onSurface) {
+            ReferenceFrame J2000 = new ReferenceFrame("J2000");
+            AberrationCorrection abcorr = new AberrationCorrection("XLT+S");
+            Body earth = new Body("EARTH");
+            PositionVector s1 = (new StateRecord(db.body, time, J2000, abcorr, sb.body)).getPosition();
+            r = s1.norm();
+
+
+        } else {
+            r = src.getBody().distance(dest.getBody());
+        }
         return 147.56 - 20*Math.log10(r*1e3) - 20*Math.log10(freq);
     }
 
@@ -108,17 +121,23 @@ public class RadioLink extends Link {
 
 //        System.out.println("SNR min: " + rx.get_SNRmin(band, freq, dest.getBody(), src.getBody()));
 //        System.out.println("Bandwidth: " + bandwidth);
+
         double bmax;
-        try {
+        try { // TODO: remove
             bmax = src.comm.get_Bmax(band, freq, src.getBody(), dest.getBody());
-            double bmax_ = dest.comm.get_Bmax(band, freq, dest.getBody(), src.getBody());
-            bmax = bmax > bmax_ ? bmax_ : bmax;
         } catch (NullPointerException e) {
             bmax = Double.POSITIVE_INFINITY;
         }
+        double bmax_;
+        try {
+            bmax_ = dest.comm.get_Bmax(band, freq, dest.getBody(), src.getBody());
+        } catch (NullPointerException e) {
+            bmax_ = Double.POSITIVE_INFINITY;
+        }
+        bmax = bmax > bmax_ ? bmax_ : bmax;
 
 
-        return bandwidth < bmax ?  4*bandwidth : bmax;
+        return bandwidth < bmax ?  4*bandwidth : 4*bmax;
     }
 
 

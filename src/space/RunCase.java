@@ -9,6 +9,7 @@ import graph.JGraphTDijkstra;
 import graph.JGraphTGraph;
 import kernelmanager.KernelManager;
 import links.ContactPlan;
+import links.FictitiousLink;
 import links.RadioLink;
 import nodes.Node;
 import links.Link;
@@ -149,6 +150,9 @@ public class RunCase {
                     double dr = 0;
                     if (contactPlans[i].calcVisibility(angle_solar_interf, angle_occlgs)) {
                         dr = ((RadioLink) links[i]).calcDataRate(time, Tk, D);
+//                        System.out.print(" " + dr + " ");
+                    } else {
+//                        System.out.print(" OUT ");
                     }
                     links[i].setWeight(1/dr);
                 }
@@ -160,7 +164,7 @@ public class RunCase {
 //                if (sp.length != 2 && sp.length != 0) {
 //                    System.out.println("WARNING: Shortest path length is not 2");
 //                }
-
+//                System.out.print("TOTAL: " + 1/sd);
 
 //                sd = dijkstra.calcShortestDistance(transmitter, receiver);
                 saveInstantLinks(graph, sp.sources, sp.destinations, start_time);
@@ -181,6 +185,7 @@ public class RunCase {
                     l.setWeight(1/l.getWeight());
                 }
                 graph.updateWeights();
+//                System.out.println();
                 sp = dijkstra.getWidestPath(transmitter, receiver);
                 widestDataRates.add(sp.distance);
                 ssp = "";
@@ -194,6 +199,9 @@ public class RunCase {
 //                    }
                 }
                 widestPath.add(ssp);
+                for (Link l: graph.getLinks()) {
+                    l.setWeight(1/l.getWeight());
+                }
 
                 SpiceTime.getSpiceTime().setTime(time.add(step));
 

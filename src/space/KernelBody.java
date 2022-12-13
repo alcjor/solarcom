@@ -65,8 +65,8 @@ public class KernelBody extends space.Body {
             return distanceKernel((KernelBody) x, (KernelBody) y);
         });
 
-        elevationOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class), (x,y) -> {
-           return elevationKernel((KernelBody) x, (KernelBody) y);
+        elevationOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class), (x,y, ref) -> {
+           return elevationKernel((KernelBody) x, (KernelBody) y, (boolean) ref);
         });
 
         angularSepOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class, KernelBody.class), (x, y, z) -> {
@@ -107,15 +107,17 @@ public class KernelBody extends space.Body {
 
     }
 
-    protected double elevationKernel(KernelBody thisBody, KernelBody other) {
+    protected double elevationKernel(KernelBody thisBody, KernelBody other, boolean refraction) {
         TDBTime time = SpiceTime.getSpiceTime().getTime();
         StateRecord s = null;
         try {
-            s = new StateRecord(other.body, time, thisBody.ref, new AberrationCorrection("XLT+S"), thisBody.body);
+            s = new StateRecord(other.body, time, thisBody.ref, new AberrationCorrection("LT+S"), thisBody.body);
             double[] rec = CSPICE.reclat(s.getPosition().toArray());
-            double elevation = rec[2] * 180 / 3.14159;
-            double R = atmRefraction(elevation);
-            elevation = elevation + R;
+            double elevation = Math.toDegrees(rec[2]);
+            if (refraction) {
+                double R = atmRefraction(elevation);
+                elevation = elevation + R;
+            }
             return elevation;
         } catch (SpiceException e) {
             throw new RuntimeException(e);
@@ -124,51 +126,61 @@ public class KernelBody extends space.Body {
 
     protected boolean occultationKernel(KernelBody obs, KernelBody target, KernelBody occulting) {
 
+
         if (obs.refName == "UNDEF" && target.refName == "UNDEF") return false;
 //        Checks if other body is occulted wrt this body
         AberrationCorrection
                 abcorr = null;
         try {
-            abcorr = new AberrationCorrection( "XLT+S" );
-            OccultationCode occ;
-//        back = receiver, obsr = transmitter, front = occulting body
-            TDBTime time = SpiceTime.getSpiceTime().getTime();
 
+//        ReferenceFrame emtpy = new ReferenceFrame(" ");
+            double time = SpiceTime.getSpiceTime().getTime().getTDBSeconds();
+            double[] aux = CSPICE.gfoclt("ANY", occulting.name, "ELLIPSOID", occulting.refName,
+                    target.name, "POINT", " ", "XLT+S", obs.name, 1,
+                    1, new double[] {time, time});
+            if (aux.length != 0) return true;
+            return false;
 
-            if (target.refName == "UNDEF") {
-                occ = OccultationState.
-                    getOccultationState(
-                            occulting.body,  "ELLIPSOID", occulting.ref,
-                            obs.body,  "POINT", obs.ref,
-                            abcorr, target.body, time     );
-                switch (occ) {
-                    case ANNLR1:
-                    case PARTL1:
-                    case TOTAL1:
-    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
-    //                    System.out.println("Type of occultation: " + occ.name());
-                        return true;
-                    default:
-                        return false;
-                }
-            } else {
-                occ = OccultationState.
-                    getOccultationState(
-                            occulting.body,  "ELLIPSOID", occulting.ref,
-                            target.body,  "POINT", target.ref,
-                            abcorr, obs.body, time     );
-                switch (occ) {
-                    case ANNLR2:
-                    case PARTL2:
-                    case TOTAL2:
-    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
-    //                    System.out.println("Type of occultation: " + occ.name());
-                        return true;
-                    default:
-                        return false;
-                }
-
-            }
+//            abcorr = new AberrationCorrection( "XLT+S" );
+//            OccultationCode occ;
+////        back = receiver, obsr = transmitter, front = occulting body
+//            TDBTime time = SpiceTime.getSpiceTime().getTime();
+//
+//
+//            if (target.refName == "UNDEF") {
+//                occ = OccultationState.
+//                    getOccultationState(
+//                            occulting.body,  "ELLIPSOID", occulting.ref,
+//                            obs.body,  "POINT", obs.ref,
+//                            abcorr, target.body, time     );
+//                switch (occ) {
+//                    case ANNLR1:
+//                    case PARTL1:
+//                    case TOTAL1:
+//    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
+//    //                    System.out.println("Type of occultation: " + occ.name());
+//                        return true;
+//                    default:
+//                        return false;
+//                }
+//            } else {
+//                occ = OccultationState.
+//                    getOccultationState(
+//                            occulting.body,  "ELLIPSOID", occulting.ref,
+//                            target.body,  "POINT", target.ref,
+//                            abcorr, obs.body, time     );
+//                switch (occ) {
+//                    case ANNLR2:
+//                    case PARTL2:
+//                    case TOTAL2:
+//    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
+//    //                    System.out.println("Type of occultation: " + occ.name());
+//                        return true;
+//                    default:
+//                        return false;
+//                }
+//
+//            }
 
 
         } catch (SpiceException e) {
