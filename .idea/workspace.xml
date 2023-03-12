@@ -9,22 +9,70 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Added readme file">
-      <change afterPath="$PROJECT_DIR$/dss15.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dss65.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/relay.csv" afterDir="false" />
+    <list default="true" id="1a9b2ef7-3f45-4018-a87a-523df37b1643" name="Changes" comment="Fixed small issues. Added examples.">
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/dss14.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/dss15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/dss45.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/dss63.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/dss65.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/mro.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/communication_parameters/relay.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/L1_de431.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/L2_de431.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/L3_de431.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/L4_de431.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/L5_de431.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N3_S1.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N3_S2.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N3_S3.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N4_S1.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N4_S2.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N4_S3.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/kernels/N4_S4.bsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/lagrange/.lagrange_consecutive.yaml.swo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/lagrange/lagrange_consecutive.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/pearl_constellation/.lagrange_consecutive.yaml.swo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/pearl_constellation/pearl_constellation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/solarcom_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/solarcom_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dss45.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dss45.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITUBands.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Preproc.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compileLinux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dss43.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/communication_parameters/dss43.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/le_output.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prova.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/provaInput.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runLinux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runLinuxJar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/JGraphTDijkstra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graph/JGraphTGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/JGraphTGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/InputReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/InputYaml.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/RunYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/RunYaml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kernelmanager/KernelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kernelmanager/KernelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/links/CommunicationParameters.javass" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/links/ContactPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/ContactPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/links/ContactPlanOld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/links/OneHopLink.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/links/RadioLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/links/RadioLink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/nodes/BodyNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/nodes/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/Body.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/DSNComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/DSNComm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/ElevationHanlder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ElevationHanlder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/KernelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/KernelBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/MainLoop.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/RunCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/RunCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GuavaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GuavaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/InputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/InputTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SpaceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCase.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/examples/simple_run/dsn_network.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCasePreproc.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669630550623</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed small issues. Added examples.">
+      <created>1670959618202</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670959618202</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -401,30 +456,16 @@
     <MESSAGE value="Resolved workspace conflict" />
     <MESSAGE value="Removed conflicting folder" />
     <MESSAGE value="Added readme file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added readme file" />
+    <MESSAGE value="Fixed small issues. Added examples." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues. Added examples." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/space/DSNComm.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/IntegrationTest.java</url>
           <line>285</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/space/KernelBody.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/links/ContactPlan.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

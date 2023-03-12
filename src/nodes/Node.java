@@ -18,8 +18,5 @@ public abstract class Node {
         return this.name;
     }
 
-//    public boolean equals(Node v) {
-//        return this.id == v.id;
-//    }
 }
 

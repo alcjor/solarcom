@@ -16,10 +16,6 @@ public abstract class Body {
     protected HashMap<ClassTuple, OccultationHanlder> occultationOpMap;
     protected HashMap<ClassTuple, AngularSepHandler> angularSepOpMap;
 
-//    protected Table<Class, Class, DistanceHandler> distanceOpTable;
-//    protected Table<Class, Class, ElevationHanlder> elevationOpTable;
-//
-//    protected Table<Class, Class, AngularSepHandler> angularSepOpTable;
 
 
     protected abstract void initOperationMap();
@@ -87,13 +83,6 @@ public abstract class Body {
         return handler.angularSep(this, body1, body2);
     }
 
-
-//    public Vector3 getPos(TDBTime time, Body observer) throws SpiceException {
-//        throw new NotImplementedException();
-//    };
-//    public double getDist(TDBTime time, Body body) throws SpiceException {
-//        throw new NotImplementedException();
-//    };
 }
 
 

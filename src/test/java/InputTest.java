@@ -1,12 +1,9 @@
 package test.java;
 
-import input.InputReader;
 import jdk.jshell.JShell;
 import nodes.FictitiousNode;
 import org.junit.Test;
 import nodes.Node;
-import space.Body;
-import space.CommunicationStrategy;
 import space.KernelBody;
 import space.SpacecraftComm;
 import spice.basic.SpiceException;
@@ -19,15 +16,6 @@ public class InputTest {
         System.out.println("Environment variable is: "  + user);
     }
 
-    @Test
-    public void yamlTest() {
-        InputReader ir = new InputReader("./provaInput.yaml");
-        ir.readFile();
-        String[] kernels = ir.getKernels();
-//        for (String kernel: kernels) {
-//            System.out.println(kernel);
-//        }
-    }
 
     @Test
     public void jshellTest() throws SpiceException {

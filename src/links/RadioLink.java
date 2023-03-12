@@ -23,19 +23,24 @@ public class RadioLink extends Link {
     }
 
     private double calcSpaceLoss(TDBTime time) throws SpiceException {
-        KernelBody sb = (KernelBody) src.getBody();
-        KernelBody db = (KernelBody) dest.getBody();
+
         double r;
-        if (!sb.onSurface) {
-            ReferenceFrame J2000 = new ReferenceFrame("J2000");
-            AberrationCorrection abcorr = new AberrationCorrection("XLT+S");
-            Body earth = new Body("EARTH");
-            PositionVector s1 = (new StateRecord(db.body, time, J2000, abcorr, sb.body)).getPosition();
-            r = s1.norm();
-
-
-        } else {
-            r = src.getBody().distance(dest.getBody());
+        try {
+            KernelBody sb = (KernelBody) src.getBody();
+            KernelBody db = (KernelBody) dest.getBody();
+            if (!sb.onSurface) {
+                ReferenceFrame J2000 = new ReferenceFrame("J2000");
+                AberrationCorrection abcorr = new AberrationCorrection("XLT+S");
+                Body earth = new Body("EARTH");
+                PositionVector s1 = (new StateRecord(db.body, time, J2000, abcorr, sb.body)).getPosition();
+                r = s1.norm();
+            } else {
+                r = src.getBody().distance(dest.getBody());
+            }
+        } catch (SpiceException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            r = dest.getBody().distance(src.getBody());
         }
         return 147.56 - 20*Math.log10(r*1e3) - 20*Math.log10(freq);
     }
@@ -57,17 +62,12 @@ public class RadioLink extends Link {
     private double calcHotBodyNoiseTemp(double Tk, double D) {
 
         double G = Math.pow(10, src.comm.get_Gt(band,freq,src.getBody(),dest.getBody())/10);
-//        System.out.println("HBN G=" + G);
         double dist = src.getBody().distance(dest.getBody());
-//        System.out.println("HBN dist=" + dist);
         try {
             double angle = src.getBody().angularSep(new KernelBody("EARTH", "IAU_EARTH", false), dest.getBody());
-//            System.out.println("HBN angle=" + angle);
             double HPBW = src.comm.get_HPBW(band,freq,src.getBody(), dest.getBody());
-//            System.out.println("HBN hpbw=" + HPBW);
             double T;
             T = (Tk*G*Math.pow(D,2))/(16*Math.pow(dist,2));
-//            System.out.println("HBN Temp=" + T);
             T = T*Math.exp(-2.77*Math.pow(angle/HPBW,2));
             return T;
         } catch (SpiceException e) {
@@ -83,44 +83,29 @@ public class RadioLink extends Link {
         double EIRP = tx.get_Pt(band, freq, src.getBody(), dest.getBody())
                 + tx.get_Gt(band, freq, src.getBody(), dest.getBody());
 
-//        System.out.println("EIRP: " + EIRP);
         double L = tx.get_loss(band, freq, src.getBody(), dest.getBody())
                 + rx.get_loss(band, freq, dest.getBody(), src.getBody());
 
         L += calcSpaceLoss(time);
-//        L += calcPolarizationLoss();
-//        System.out.println("Total Loss: " + L);
-
 
 
         // change
         double Tsys = tx.get_Tamw(band, freq, src.getBody(), dest.getBody()) +
                 rx.get_Tamw(band, freq, dest.getBody(), src.getBody());
 
-//        System.out.println("Tamwt: " +  tx.get_Tamw(band, freq, src.getBody(), dest.getBody()));
-//        System.out.println("Tr: " +  rx.get_Tamw(band, freq, dest.getBody(), src.getBody()));
-//
-//        System.out.println("Tsys w/o HBN: " + Tsys);
 
         Tsys += calcHotBodyNoiseTemp(Tk, D);
 
         Tsys = 10*Math.log10(Tsys);
-//        System.out.println("Tsys: " + Tsys);
 
         double Gr = rx.get_Gr(band, freq, dest.getBody(), src.getBody());
 
-//        System.out.println("Gr: " + Gr);
 
         double SNR = EIRP + L + Gr - Tsys + 228.6;
 
-//        System.out.println("SNR: " + SNR);
         double bandwidth = SNR - rx.get_SNRmin(band, freq, dest.getBody(), src.getBody());
         bandwidth = Math.pow(10, bandwidth/10);
 
-//        return bandwidth;
-
-//        System.out.println("SNR min: " + rx.get_SNRmin(band, freq, dest.getBody(), src.getBody()));
-//        System.out.println("Bandwidth: " + bandwidth);
 
         double bmax;
         try { // TODO: remove

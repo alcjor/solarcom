@@ -97,19 +97,12 @@ public class RunYaml {
         kernelPath = (String) config.get("kernelPath");
         kernelPath = "\"" + kernelPath + "\"";
         classPath = (String) config.get("classPath");
-//        classPath = "\"" + classPath + "\"";
     }
 
     public void initJShell() {
         String cp = System.getProperty("java.class.path");
-//        if (data.containsKey("classPath")) {
-//            String classpath = ((String) data.get("classPath"));
-//            cp = cp + ":" + classpath.substring(2, classpath.length()-2);
-//        }
         cp = cp + ":" + classPath;
-        System.out.println(cp);
-//        String spice_path = (String) data.get("spicePath");
-//        spice_path = spice_path.substring(2, spice_path.length()-2);
+        System.out.println(cp);;
         jshell = JShell.builder().remoteVMOptions("-Djava.library.path=" + spicePath).build();
         jshell.addToClasspath(cp);
         for (String imp: imports) {
@@ -161,8 +154,8 @@ public class RunYaml {
         instanceCreation = type + " " + identifier +
                 " = new " + type + "(" + attributeString + ");";
         safeEval(instanceCreation);
-        System.out.println(instanceCreation);
-        jshell.eval("System.out.println(" + identifier + ".getClass());");
+//        System.out.println(instanceCreation);
+//        jshell.eval("System.out.println(" + identifier + ".getClass());");
     }
 
     public void createGroup(String groupClass, String groupName) {
@@ -174,9 +167,6 @@ public class RunYaml {
             for (Object obj: objects) {
                 createInstance(type, (Map<String, Object>) obj, true, groupList);
                 System.out.println("Instance: " + groupList.get(groupList.size()-1));
-//                VarSnippet[] vars = jshell.variables().toArray(VarSnippet[]::new);
-
-//                safeEval(groupList.get(groupList.size()-1) + ".getClass();");
             }
         }
         String groupString = String.join(",", groupList);
@@ -209,8 +199,6 @@ public class RunYaml {
                                 "step", "transmitter", "receiver", "occulting",
                                 "outputFile", "classPath");
 
-//        String kernelPath = (String) data.get("kernelPath");
-//        kernelPath = kernelPath.replaceAll("\\\\", "");
         String outputFile = (String) data.get("outputFile");
         outputFile = outputFile.replaceAll("\\\\", "");
         ArrayList<String> kernelList = (ArrayList<String>) data.get("kernelUrls");
@@ -229,7 +217,6 @@ public class RunYaml {
 
         for (String type: data.keySet()) {
             if (keywords.contains(type)) continue;
-//            System.out.println(type);
             createInstances(type, data);
         }
 
@@ -237,38 +224,12 @@ public class RunYaml {
         String occulting = occultingList.toString();
         occulting = occulting.substring(1, occulting.length()-1);
         safeEval("Body[] occulting = {" + occulting + "};");
-        System.out.println("FIRST OCCULTING BODY:");
-        safeEval("System.out.println(occulting[0].getName());");
 
 //      Nodes
         createGroup("Node", "nodes");
-//        Map<String, Object> nodeMap = (Map<String, Object>) data.get("nodes");
-//        String nodes = "";
-//        for (String type: nodeMap.keySet()) {
-//            List<Object> objects = (List<Object>) nodeMap.get(type);
-//            for (Object obj: objects) {
-//                createInstance(type, (Map<String, Object>) obj);
-//                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
-//                nodes = nodes.concat(identifier + ",");
-//            }
-//        }
-//        safeEval("Node[] nodes = {" + nodes + "};");
-//        safeEval("System.out.println(nodes);");
-//        System.out.println("THE NODES: " + nodes);
 
 //      Links
         createGroup("Link", "links");
-//        Map<String, Object> linkMap = (Map<String, Object>) data.get("links");
-//        String links = "";
-//        for (String type: linkMap.keySet()) {
-//            List<Object> objects = (List<Object>) linkMap.get(type);
-//            for (Object obj: objects) {
-//                createInstance(type, (Map<String, Object>) obj);
-//                String identifier = (String) ((Map<String, Object>) obj).keySet().toArray()[0];
-//                links = links.concat(identifier + ",");
-//            }
-//        }
-//        safeEval("Link[] links = {" + links + "};");
 
 //       Run the code
         safeEval("String[] kernelUrls = {" + kernelUrls + "};");

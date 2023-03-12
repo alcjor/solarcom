@@ -1,4 +1,0 @@
-ROOTSPICE=~/SPICE/JNISpice
-ROOTSOLARCOM=~/solarcom2
-cd ${SOLARCOM}
-java -cp ${ROOTSPICE}/src/JNISpice:${ROOTSOLARCOM}/src -Djava.library.path=${ROOTSPICE}/lib ${ROOTSOLARCOM}/src/Main.java

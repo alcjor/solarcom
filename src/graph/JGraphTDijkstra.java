@@ -53,11 +53,6 @@ public class JGraphTDijkstra implements Dijkstra {
 
         GraphPath shortest_path =  dijkstraAlg.findPathBetween(graph.getGraph(), src, target);
 
-        for (Link l: graph.getLinks()) {
-//                if (l.getClass() == RadioLink.class) {
-                System.out.print(" " + 1/l.getWeight());
-//                }
-        }
         if (shortest_path != null) {
             List edges = shortest_path.getEdgeList();
             result.length = shortest_path.getLength();
@@ -66,10 +61,7 @@ public class JGraphTDijkstra implements Dijkstra {
                 result.sources.add((Node) graph.getGraph().getEdgeSource(e));
                 result.destinations.add((Node) graph.getGraph().getEdgeTarget(e));
             }
-        } else {
-            System.out.print(" NULL ");
-
-        }
+        } 
         return result;
     }
 
@@ -101,17 +93,12 @@ public class JGraphTDijkstra implements Dijkstra {
         ShortestPath result = new ShortestPath(new ArrayList<>(), new ArrayList<>(), 0.0, 0);
 
         int nnodes = this.graph.nodes.size();
-//        Map<Node, Boolean> isVisited = new HashMap();
-//        Map<Node, Double> distance = new HashMap<>();
-//        Map<Node, Node> route = new HashMap<>();
         Map<Node, NodeInfo> nodesInfo = new HashMap<>();
 
         for (Node n: graph.nodes) {
             nodesInfo.put(n, new NodeInfo(0.0, false, null));
         }
 
-//        distance.
-//        isVisited.put(src, true);
         nodesInfo.get(src).visited = true;
 
         List<Link> nodeLinks;
@@ -120,7 +107,6 @@ public class JGraphTDijkstra implements Dijkstra {
         NodeInfo maxInfo = new NodeInfo(0.0, false, null);
         Node maxNode = null;
         for (Link l: nodeLinks) {
-//            distance.put(l.getDest(), l.getWeight());
             aux = nodesInfo.get(l.getDest());
             aux.dist = l.getWeight();
             aux.parent = src;
@@ -142,7 +128,6 @@ public class JGraphTDijkstra implements Dijkstra {
                 if (!aux.visited && aux.dist > maxInfo.dist) {
                     maxInfo = aux;
                     maxNode = n;
-//                    System.out.println("Iter: " + iter + " Maxnode: " + n.getName() + " Visited: " + aux.visited);
                 }
             }
             if (maxInfo.dist == -42.0) {

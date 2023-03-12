@@ -346,8 +346,8 @@ public class IntegrationTest {
         KernelBody juno = new KernelBody("JUNO", "JUNO_SPACECRAFT", false);
         BodyNode junonode = new BodyNode(juno, junocomm);
 
-        CommunicationStrategy dsncomm = new DSNComm("dss43.csv");
-        KernelBody dsn = new KernelBody("DSS-43", "DSS-43_TOPO", true);
+        CommunicationStrategy dsncomm = new DSNComm("dss45.csv");
+        KernelBody dsn = new KernelBody("DSS-45", "DSS-45_TOPO", true);
         BodyNode dsnnode = new BodyNode(dsn, dsncomm);
 
         KernelManager km = new KernelManager("/home/jordi/SPICE/kernels",

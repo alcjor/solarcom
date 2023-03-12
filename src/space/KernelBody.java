@@ -24,42 +24,17 @@ public class KernelBody extends space.Body {
         this.body = new Body(name);
         this.onSurface = onSurface;
 
-//        new ReferenceFrame()
-
 
     }
 
-//    public Vector3 getPos(TDBTime time, KernelBody observer) throws SpiceException {
-//        return new StateRecord(body, time, observer.ref,
-//                new AberrationCorrection("XLT+S"), observer.body).getPosition();
-//    }
-
-//    public double getDist(KernelBody obs) throws SpiceException {
-//        TDBTime time = SpiceTime.getSpiceTime().getTime();
-//        StateRecord s = new StateRecord(body, time, obs.ref,
-//                new AberrationCorrection("XLT+S"), obs.body);
-//        return s.getPosition().norm();
-//    }
 
     protected void initOperationMap() {
-//        distanceOpTable = HashBasedTable.create();
-//        elevationOpTable = HashBasedTable.create();
-//        occultationObsOpTable = HashBasedTable.create();
-//        occultationTargOpTable = HashBasedTable.create();
-//        occultationOccOpTable = HashBasedTable.create();
 
         distanceOpMap = new HashMap<>();
         elevationOpMap = new HashMap<>();
         angularSepOpMap = new HashMap<>();
         occultationOpMap = new HashMap<>();
 
-//        distanceOpTable.put(KernelBody.class, KernelBody.class, (x,y) -> {
-//            return distanceKernel((KernelBody) x, (KernelBody) y);
-//        });
-//
-//        elevationOpTable.put(KernelBody.class, KernelBody.class, (x,y) -> {
-//           return elevationKernel((KernelBody) x, (KernelBody) y);
-//        });
 
         distanceOpMap.put(ClassTuple.of(KernelBody.class, KernelBody.class), (x,y) -> {
             return distanceKernel((KernelBody) x, (KernelBody) y);
@@ -77,10 +52,6 @@ public class KernelBody extends space.Body {
             return occultationKernel((KernelBody) x, (KernelBody) y, (KernelBody) z);
         });
 
-//        occultationObsOpTable.put(KernelBody.class, KernelBody.class, (x,y,z) -> {
-//            return occultationKernel((KernelBody) x, (KernelBody) y, (KernelBody) z);
-//        });
-
     }
 
     protected double distanceKernel(KernelBody thisBody, KernelBody other) {
@@ -92,15 +63,7 @@ public class KernelBody extends space.Body {
             PositionVector s1 = (new StateRecord(thisBody.body, time, J2000, abcorr, earth)).getPosition();
             PositionVector s2 = (new StateRecord(other.body, time, J2000, abcorr, earth)).getPosition();
             return s1.dist(s2);
-//
-//            if (other.refName == "UNDEF") {
-//            s = new StateRecord(other.body, time, this.ref,
-//                    new AberrationCorrection("XLT+S"), this.body);
-//            } else {
-//                s = new StateRecord(thisBody.body, time, other.ref,
-//                     new AberrationCorrection("XLT+S"), other.body);
-//            }
-//            return s.getPosition().norm();
+
         } catch (SpiceException e) {
             throw new RuntimeException(e);
         }
@@ -133,54 +96,12 @@ public class KernelBody extends space.Body {
                 abcorr = null;
         try {
 
-//        ReferenceFrame emtpy = new ReferenceFrame(" ");
             double time = SpiceTime.getSpiceTime().getTime().getTDBSeconds();
             double[] aux = CSPICE.gfoclt("ANY", occulting.name, "ELLIPSOID", occulting.refName,
                     target.name, "POINT", " ", "XLT+S", obs.name, 1,
                     1, new double[] {time, time});
             if (aux.length != 0) return true;
             return false;
-
-//            abcorr = new AberrationCorrection( "XLT+S" );
-//            OccultationCode occ;
-////        back = receiver, obsr = transmitter, front = occulting body
-//            TDBTime time = SpiceTime.getSpiceTime().getTime();
-//
-//
-//            if (target.refName == "UNDEF") {
-//                occ = OccultationState.
-//                    getOccultationState(
-//                            occulting.body,  "ELLIPSOID", occulting.ref,
-//                            obs.body,  "POINT", obs.ref,
-//                            abcorr, target.body, time     );
-//                switch (occ) {
-//                    case ANNLR1:
-//                    case PARTL1:
-//                    case TOTAL1:
-//    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
-//    //                    System.out.println("Type of occultation: " + occ.name());
-//                        return true;
-//                    default:
-//                        return false;
-//                }
-//            } else {
-//                occ = OccultationState.
-//                    getOccultationState(
-//                            occulting.body,  "ELLIPSOID", occulting.ref,
-//                            target.body,  "POINT", target.ref,
-//                            abcorr, obs.body, time     );
-//                switch (occ) {
-//                    case ANNLR2:
-//                    case PARTL2:
-//                    case TOTAL2:
-//    //                    System.out.println(other.getName() + " occulted from " + this.getName() + " by " + occulting.getName());
-//    //                    System.out.println("Type of occultation: " + occ.name());
-//                        return true;
-//                    default:
-//                        return false;
-//                }
-//
-//            }
 
 
         } catch (SpiceException e) {
@@ -200,26 +121,7 @@ public class KernelBody extends space.Body {
             PositionVector p2 = (new StateRecord(body2.body, time, J2000, abcorr, earth)).getPosition();
             PositionVector p3 = (new StateRecord(thisBody.body, time, J2000, abcorr, earth)).getPosition();
             return Math.toDegrees(p1.sub(p3).sep(p2.sub(p3)));
-//            abcorr = new AberrationCorrection( "XLT" );
-//            TDBTime time = SpiceTime.getSpiceTime().getTime();
-//
-//            if (thisBody.refName == "UNDEF") {
-//                StateRecord s = new StateRecord(body1.body, time, thisBody.ref, abcorr, thisBody.body);
-//
-//                PositionVector v1 = s.getPosition();
-//
-//                StateRecord s2 = new StateRecord(body2.body, time, thisBody.ref, abcorr, thisBody.body);
-//                PositionVector v2 = s2.getPosition();
-//                return v1.sep(v2) * 180/3.14159;
-//            } else {
-//                StateRecord s = new StateRecord(body1.body, time, thisBody.ref, abcorr, thisBody.body);
-//
-//                PositionVector v1 = s.getPosition();
-//
-//                StateRecord s2 = new StateRecord(body2.body, time, thisBody.ref, abcorr, thisBody.body);
-//                PositionVector v2 = s2.getPosition();
-//                return v1.sep(v2) * 180/3.14159;
-//            }
+
 
         } catch (SpiceException e) {
             throw new RuntimeException(e);

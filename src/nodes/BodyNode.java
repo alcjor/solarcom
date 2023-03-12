@@ -1,7 +1,4 @@
 package nodes;
-//
-//import spice.basic.Body;
-//import spice.basic.SpiceException;
 
 import space.Body;
 import space.CommunicationStrategy;

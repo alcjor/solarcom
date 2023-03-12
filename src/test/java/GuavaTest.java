@@ -32,10 +32,4 @@ public class GuavaTest {
         System.out.println(table.get("fmin", "L"));
     }
 
-    @Test
-    public void testCSV() {
-        Table table = TableReader.read("ITUBands.csv");
-        System.out.println(table);
-        System.out.println(table.get("fmin", "X"));
-    }
 }

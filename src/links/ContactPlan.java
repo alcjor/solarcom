@@ -24,28 +24,19 @@ public class ContactPlan {
         boolean isOcc;
         for (Body occulting: occultingBodies) {
             isOcc = rl.src.getBody().occultation(rl.dest.getBody(), occulting);
-            if (isOcc) System.out.println("OCCULTED BY: " + occulting.getName());
             if (isOcc) return true;
         }
         return false;
     }
 
     public boolean calcSolarInterference(double angle_param) {
-
-//        double angle = rl.src.getBody().angularSep(rl.dest.getBody(), sun);
-//
-//        double dist_sun = rl.src.getBody().distance(sun);
-//        double dist_dest = rl.src.getBody().distance(rl.dest.getBody());
-//        boolean cond1 = (angle <= angle_param && dist_sun < dist_dest);
-//        boolean cond2 = angle >= 180 - angle_param;
-//        return (cond1 || cond2);
-
-        KernelBody body1 = (KernelBody) rl.src.getBody();
-        KernelBody body2 = (KernelBody) rl.dest.getBody();
-        KernelBody bodySun = (KernelBody) sun;
-        double[] state = new double[6];
-        double[] lt = new double[1];
         try {
+            KernelBody body1 = (KernelBody) rl.src.getBody();
+            KernelBody body2 = (KernelBody) rl.dest.getBody();
+            KernelBody bodySun = (KernelBody) sun;
+            double[] state = new double[6];
+            double[] lt = new double[1];
+
             CSPICE.spkezr(body2.getName(), SpiceTime.getSpiceTime().getTime().getTDBSeconds(),
                     "J2000", "XLT", body1.getName(), state, lt);
 
@@ -64,6 +55,14 @@ public class ContactPlan {
             return (condition1 || condition2);
         } catch (SpiceErrorException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            KernelBody bodySun = (KernelBody) sun;
+            double angle = rl.src.getBody().angularSep(rl.dest.getBody(), sun);
+            double dist_sun = rl.src.getBody().distance(sun);
+            double dist_dest = rl.src.getBody().distance(rl.dest.getBody());
+            boolean cond1 = (angle <= angle_param && dist_sun < dist_dest);
+            boolean cond2 = angle >= 180 - angle_param;
+            return (cond1 || cond2);
         }
 
     }
@@ -85,13 +84,9 @@ public class ContactPlan {
     }
 
     public boolean calcVisibility(double angle_solar_interf, double angle_occlgs) {
-//        System.out.println("VIS");
         if (calcOccultation()) return false;
-//        System.out.println("NO OCC");
         if (calcSolarInterference(angle_solar_interf)) return false;
-//        System.out.println("NO SOLAR");
         if (calcOccLgs(angle_occlgs)) return false;
-//        System.out.println("NO LGS");
         return true;
     }
 

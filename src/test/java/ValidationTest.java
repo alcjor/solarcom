@@ -3,9 +3,7 @@ package test.java;
 import com.github.sh0nk.matplotlib4j.Plot;
 import com.github.sh0nk.matplotlib4j.PythonConfig;
 import com.github.sh0nk.matplotlib4j.PythonExecutionException;
-import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import input.InputYaml;
 import input.RunYaml;
 import jdk.jshell.JShell;
 import jdk.jshell.JShellException;
@@ -116,71 +114,6 @@ public class ValidationTest {
         runYaml.run();
         runYaml.jshell.eval("System.out.println(\"First occulting:\");");
         runYaml.jshell.eval("System.out.println(occulting[0].getName());");
-    }
-
-    @Test
-    public void yamlTestOld() throws JShellException {
-
-        InputStream inputStream;
-        try {
-            File tempFile = File.createTempFile("buffer", ".tmp");
-            FileWriter fw = new FileWriter(tempFile);
-            Reader fr = new FileReader("testCase.yaml");
-            BufferedReader br = new BufferedReader(fr);
-            while(br.ready()) {
-                fw.write(br.readLine().replaceAll("\"", "\\\\\"") + "\n");
-            }
-            fw.close();
-            br.close();
-            fr.close();
-            tempFile.renameTo(new File("/home/jordi/solarcom2/testCasePreproc.yaml"));
-            inputStream = new FileInputStream(new File("testCasePreproc.yaml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Yaml yaml = new Yaml();
-        Map<String,Object> data = yaml.load(inputStream);
-//        List<Object> kernelBodies = (List<Object>) data.get("KernelBody");
-//        System.out.println(data.keySet());
-//        Map<String,Object> mro = (Map<String, Object>) kernelBodies.get(0);
-//        mro = (Map<String, Object>) mro.get("mro");
-//        System.out.println(mro);
-
-        String cp = System.getProperty("java.class.path");
-        JShell jshell = JShell.builder().remoteVMOptions("-Djava.library.path=/home/jordi/SPICE/JNISpice/lib").build();
-        jshell.addToClasspath(cp);
-        for (String imp: imports) {
-            jshell.eval(imp);
-        }
-
-        String instanceCreation = "";
-        for (String type: data.keySet()) {
-            List<Object> objects = (List<Object>) data.get(type);
-            for (Object obj: objects) {
-                Map<String, Object> objectMap = (Map<String, Object>) obj;
-                String identifier = (String) objectMap.keySet().toArray()[0];
-                Map<String, Object> attributeMap = (Map<String, Object>) objectMap.get(identifier);
-                String[] attributeNames = attributeMap.keySet().toArray(new String[0]);
-                Object[] attributeValues = new Object[attributeNames.length];
-                String attributeString = "";
-                for (int i = 0; i < attributeValues.length; i++) {
-                    attributeValues[i] = attributeMap.get(attributeNames[i]);
-                    attributeString = attributeString.concat(attributeValues[i] + ",");
-                }
-                attributeString = attributeString.substring(0, attributeString.length() - 1);
-                attributeString = attributeString.replaceAll("\\\\", "");
-//                System.out.println(attributeString);
-                System.out.println(instanceCreation);
-                instanceCreation = type + " " + identifier +
-                        " = new " + type + "(" + attributeString + ");";
-                jshell.eval(instanceCreation);
-            }
-        }
-        System.out.println(instanceCreation);
-        jshell.eval("System.out.println(\"Hi I'm SOURCE:\");");
-        jshell.eval("System.out.println(mylink.getSrc().getName());");
-
     }
 
     @Test

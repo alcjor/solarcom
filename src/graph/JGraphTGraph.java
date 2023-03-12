@@ -39,7 +39,6 @@ public class JGraphTGraph implements Graph{
 
 
     public void updateWeights() {
-//        System.out.print(" SET ");
         for (Link link: links) {
             DefaultWeightedEdge edge = this.graph.getEdge(link.getSrc(), link.getDest());
             this.graph.setEdgeWeight(edge, link.getWeight());

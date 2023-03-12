@@ -37,12 +37,7 @@ public class DSNComm implements CommunicationStrategy {
 
 
     public double get_Gt(String band, double freq, Body self, Body other) {
-//        Requires frequency, CD, and elevation
 
-//        TODO: remove!!
-//        double freq = 0;
-//        double CD = 0;
-//        double elevation = 10;
         double CD = 0.9;
         double a;
         double elevation = self.elevation(other, false);
@@ -60,12 +55,6 @@ public class DSNComm implements CommunicationStrategy {
     }
 
     public double get_Gr(String band, double freq, Body self, Body other) {
-//        Requires frequency, CD, and elevation
-
-//        TODO: remove!!
-//        double freq = 7.15e9;
-//        double CD = 0;
-//        double elevation = 0;
         double CD;
         double a;
         double elevation = self.elevation(other, false);
@@ -76,16 +65,9 @@ public class DSNComm implements CommunicationStrategy {
         } catch (NullPointerException e) {
             a = calcAtmosphericAttenuation(band, elevation);
         }
-//                System.out.println("atmos: " + a);
-//        System.out.println("elev: " + elevation);
-//        System.out.println("dist: " + self.distance(other));
 
         double G = params.get("G0r", band) -params.get("G1", band)*Math.pow(
                 elevation - params.get("gamma", band),2) - a;
-//        System.out.println("G pre: " + G);
-//        System.out.println("G0r: " + params.get("G0r", band));
-//        System.out.println("G1: " + params.get("G1", band));
-//        System.out.println("gamma: " + params.get("gamma", band));
 
         return G + 20*Math.log10(freq*1e-6/params.get("f0r", band));
     }

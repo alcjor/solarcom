@@ -142,7 +142,7 @@ public class RunCase {
         for (int stepNum = 0; stepNum < numSteps; ++stepNum) {
             try {
                 if (!(end_time.getTDBSeconds() >= SpiceTime.getSpiceTime().getTime().getTDBSeconds())) break;
-                if (stepNum % 1 == 0) System.out.println("Step: " + stepNum + " of " + numSteps);
+                if (stepNum % 100 == 0) System.out.println("Step: " + stepNum + " of " + numSteps);
 
                 TDBTime time = SpiceTime.getSpiceTime().getTime();
                 for (int i = 0; i < contactPlans.length; i++) {
@@ -150,9 +150,7 @@ public class RunCase {
                     double dr = 0;
                     if (contactPlans[i].calcVisibility(angle_solar_interf, angle_occlgs)) {
                         dr = ((RadioLink) links[i]).calcDataRate(time, Tk, D);
-//                        System.out.print(" " + dr + " ");
                     } else {
-//                        System.out.print(" OUT ");
                     }
                     links[i].setWeight(1/dr);
                 }
@@ -161,12 +159,6 @@ public class RunCase {
                 JGraphTDijkstra dijkstra = new JGraphTDijkstra(graph);
                 JGraphTDijkstra.ShortestPath sp = dijkstra.getShortestPath(transmitter, receiver);
                 double sd = sp.distance;
-//                if (sp.length != 2 && sp.length != 0) {
-//                    System.out.println("WARNING: Shortest path length is not 2");
-//                }
-//                System.out.print("TOTAL: " + 1/sd);
-
-//                sd = dijkstra.calcShortestDistance(transmitter, receiver);
                 saveInstantLinks(graph, sp.sources, sp.destinations, start_time);
                 String ssp;
                 ssp = "";
@@ -185,7 +177,6 @@ public class RunCase {
                     l.setWeight(1/l.getWeight());
                 }
                 graph.updateWeights();
-//                System.out.println();
                 sp = dijkstra.getWidestPath(transmitter, receiver);
                 widestDataRates.add(sp.distance);
                 ssp = "";
@@ -194,9 +185,6 @@ public class RunCase {
                     for (int i = sp.destinations.size()-1; i >= 0; --i) {
                         ssp = ssp + "/" + sp.destinations.get(i).getName();
                     }
-//                    for (Node n: sp.sources) {
-//                        ssp += n.getName() + "/";
-//                    }
                 }
                 widestPath.add(ssp);
                 for (Link l: graph.getLinks()) {
@@ -228,15 +216,11 @@ public class RunCase {
     public void saveInstantLinks(Graph g, List<Node> sp_sources, List<Node> sp_dest, TDBTime start_time) {
         try {
             CSVWriter linksWriter = new CSVWriter(new FileWriter("links.csv", true));
-//            String[] linksEntries = {"time_start", "time_end", "Source", "Target"};
-//            linksWriter.writeNext(linksEntries);
             List<Link> links = g.getLinks();
             int sp_count = 0;
             for (Link l : links) {
                 if (l.getWeight() < Double.POSITIVE_INFINITY) {
                     TDBTime time = SpiceTime.getSpiceTime().getTime();
-//                    int seconds = (int) (time.getTDBSeconds() - start_time.getTDBSeconds());
-//                    int seconds_end = (int) (seconds+step.getMeasure());
                     boolean in_sp = false;
                     for (int i = 0; i < sp_sources.size(); i++) {
                         if (sp_sources.get(i) == l.getSrc() && sp_dest.get(i) == l.getDest()) {
@@ -252,11 +236,7 @@ public class RunCase {
                 }
             }
             linksWriter.close();
-//            if (sp_count != 0 && sp_count != 2) {
-//                System.out.println("WARNING! Incorrect shortest path lenght: " + sp_count);
-//            }
         } catch (IOException e) {
-//        } catch (IOException | SpiceException e) {
             throw new RuntimeException(e);
         } catch (SpiceErrorException e) {
             throw new RuntimeException(e);
@@ -327,10 +307,8 @@ public class RunCase {
         double ymax = Collections.max(mbps);
 
         plt.ylim(ymin*0.9,ymax*1.1);
-//        plt.plot().
         plt.ylabel("Data rate [Mbps]");
         plt.xlabel("Hours since simulation start");
-//        plt.title("Datarate");
         try {
             plt.show();
         } catch (IOException e) {
