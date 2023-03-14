@@ -30,10 +30,10 @@ kernelUrls:
   - "https://naif.jpl.nasa.gov/pub/naif/pds/data/mro-m-spice-6-v1.0/mrosp_1000/data/spk/mro_psp46.bsp"
   - "https://naif.jpl.nasa.gov/pub/naif/pds/data/mro-m-spice-6-v1.0/mrosp_1000/data/spk/mro_psp46_ssd_mro95a.bsp"
   - "https://naif.jpl.nasa.gov/pub/naif/pds/data/mro-m-spice-6-v1.0/mrosp_1000/data/spk/mro_struct_v10.bsp"
-  - "https://naif.jpl.nasa.gov/stations.bsp"
-  - "https://naif.jpl.nasa.gov/earth_topo_201023.tf"
-  - "https://naif.jpl.nasa.gov/earth_000101_220717_220423.bpc"
-  - "https://naif.jpl.nasa.gov/earthstn.bsp"
+  - "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/stations/a_old_versions/stations.bsp"
+  - "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/stations/earth_topo_201023.tf"
+  - "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_latest_high_prec.bpc"
+  - "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/stations/a_old_versions/earthstn.bsp"
 
 
 
